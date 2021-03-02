@@ -11,7 +11,7 @@ jobs:
         run: |
           npm i lix
           npx lix download
-          npx lix lime build html5
+          npx lix lime build html5 -final
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
