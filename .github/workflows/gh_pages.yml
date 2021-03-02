@@ -9,7 +9,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          npm i -g lix
+          npm i lix
           npx lix download
           npx lix lime build html5
 
