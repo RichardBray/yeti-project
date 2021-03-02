@@ -5,7 +5,7 @@ import flixel.text.FlxText;
 import utils.LoadFile;
 
 class PlayState extends FlxState {
-	public final pjson = LoadFile.json("/Users/richardoliverbray/yeti-project/package.json");
+	final pjson = LoadFile.json("/Users/richardoliverbray/yeti-project/package.json");
 
 	override public function create() {
 		super.create();
