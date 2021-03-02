@@ -7,7 +7,8 @@
     "start": "npx concurrently \"npm run watch\" \"npm run server\"",
     "watch": "watchman-make -p 'source/**/*.hx' -r 'sh watcher.sh'",
     "server": "npx http-server export/html5/bin",
-    "comp-server": "npx haxe -v --wait 6000"
+    "comp-server": "npx haxe -v --wait 6000",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,8 @@
   "dependencies": {
     "concurrently": "^5.2.0",
     "http-server": "^0.12.3"
+  },
+  "devDependencies": {
+    "standard-version": "^9.1.1"
   }
 }
