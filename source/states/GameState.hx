@@ -18,11 +18,5 @@ class GameState extends FlxState {
 
 		FlxG.autoPause = false;
 		FlxG.camera.antialiasing = true;
-
-		add(new FlxText('Hello World ${version}', 32).screenCenter());
-	}
-
-	override public function update(elapsed:Float) {
-		super.update(elapsed);
 	}
 }
