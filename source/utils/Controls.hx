@@ -6,6 +6,7 @@ final class Controls {
 	public var left:FlxActionDigital;
 	public var right:FlxActionDigital;
 	public var circle:FlxActionDigital;
+	public var cross:FlxActionDigital;
 
 	public static final instance:Controls = new Controls();
 
@@ -18,6 +19,7 @@ final class Controls {
 		left = new FlxActionDigital();
 		right = new FlxActionDigital();
 		circle = new FlxActionDigital();
+		cross = new FlxActionDigital();
 	}
 
 	function keyboardInputs() {
@@ -29,5 +31,7 @@ final class Controls {
 		right.addKey(D, PRESSED);
 		// - circle
 		circle.addKey(SHIFT, PRESSED);
+		// - cross
+		cross.addKey(SPACE, PRESSED);
 	}
 }

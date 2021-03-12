@@ -17,11 +17,10 @@ final class Player extends FlxSprite {
 	final controls:Controls = Controls.instance;
 
 	var playerState:States = States.Idle;
-
 	// - controls
 	var left = false;
 	var right = false;
-	var circle = false;
+	var runBtnPressed = false;
 	// - control mods
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
@@ -49,10 +48,10 @@ final class Player extends FlxSprite {
 		switch (playerState) {
 			case States.Sneaking:
 				movement(SNEAK_SPEED);
-				if (circle) playerState = States.Running;
+				if (runBtnPressed) playerState = States.Running;
 			case States.Running:
 				movement(RUN_SPEED);
-				if (!circle) playerState = States.Sneaking;
+				if (!runBtnPressed) playerState = States.Sneaking;
 			case States.Idle:
 				velocity.x = 0;
 				if (singleDirectionPressed) playerState = States.Sneaking;
@@ -62,7 +61,7 @@ final class Player extends FlxSprite {
 	function updateControls() {
 		left = controls.left.check();
 		right = controls.right.check();
-		circle = controls.circle.check();
+		runBtnPressed = controls.circle.check();
 
 		bothDirectionsPressed = left && right;
 		singleDirectionPressed = left || right;
