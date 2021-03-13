@@ -1,0 +1,1540 @@
+{
+  "frames": [
+    {
+      "filename": "Yeti_Hide-03.png",
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 82,
+        "h": 167
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 25,
+        "y": 4.5,
+        "w": 82,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 131.5,
+        "h": 176.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Hide-04.png",
+      "frame": {
+        "x": 173,
+        "y": 2,
+        "w": 82,
+        "h": 167
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 25,
+        "y": 4.5,
+        "w": 82,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 131.5,
+        "h": 176.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-04.png",
+      "frame": {
+        "x": 344,
+        "y": 2,
+        "w": 91,
+        "h": 206
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6.5,
+        "y": 13,
+        "w": 91,
+        "h": 206
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-05.png",
+      "frame": {
+        "x": 554,
+        "y": 2,
+        "w": 91,
+        "h": 204.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6.5,
+        "y": 14.5,
+        "w": 91,
+        "h": 204.5
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-06.png",
+      "frame": {
+        "x": 762.5,
+        "y": 2,
+        "w": 91,
+        "h": 190
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6.5,
+        "y": 10.5,
+        "w": 91,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-08.png",
+      "frame": {
+        "x": 956.5,
+        "y": 2,
+        "w": 91.5,
+        "h": 206.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 12.5,
+        "w": 91.5,
+        "h": 206.5
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-09.png",
+      "frame": {
+        "x": 1167,
+        "y": 2,
+        "w": 91.5,
+        "h": 204.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 14.5,
+        "w": 91.5,
+        "h": 204.5
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-01.png",
+      "frame": {
+        "x": 1375.5,
+        "y": 2,
+        "w": 92,
+        "h": 208.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 10.5,
+        "w": 92,
+        "h": 208.5
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-03.png",
+      "frame": {
+        "x": 1588,
+        "y": 2,
+        "w": 93,
+        "h": 211
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 8,
+        "w": 93,
+        "h": 211
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-07.png",
+      "frame": {
+        "x": 1803,
+        "y": 2,
+        "w": 93.5,
+        "h": 190.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 8,
+        "w": 93.5,
+        "h": 190.5
+      },
+      "sourceSize": {
+        "w": 103.5,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Tree-02.png",
+      "frame": {
+        "x": 2,
+        "y": 88,
+        "w": 94,
+        "h": 190
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 94,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 104,
+        "h": 224
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-04.png",
+      "frame": {
+        "x": 196,
+        "y": 88,
+        "w": 140.5,
+        "h": 108.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 66,
+        "w": 140.5,
+        "h": 108.5
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Hide-01.png",
+      "frame": {
+        "x": 340.5,
+        "y": 97,
+        "w": 104.5,
+        "h": 165.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13.5,
+        "y": 6,
+        "w": 104.5,
+        "h": 165.5
+      },
+      "sourceSize": {
+        "w": 131.5,
+        "h": 176.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Idle-01.png",
+      "frame": {
+        "x": 510,
+        "y": 97,
+        "w": 104.5,
+        "h": 166
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 5,
+        "w": 104.5,
+        "h": 166
+      },
+      "sourceSize": {
+        "w": 115,
+        "h": 175
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Idle-02.png",
+      "frame": {
+        "x": 680,
+        "y": 97,
+        "w": 104.5,
+        "h": 164.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 6.5,
+        "w": 104.5,
+        "h": 164.5
+      },
+      "sourceSize": {
+        "w": 115,
+        "h": 175
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Idle-03.png",
+      "frame": {
+        "x": 848.5,
+        "y": 97.5,
+        "w": 104.5,
+        "h": 163
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 8,
+        "w": 104.5,
+        "h": 163
+      },
+      "sourceSize": {
+        "w": 115,
+        "h": 175
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Idle-04.png",
+      "frame": {
+        "x": 1015.5,
+        "y": 97.5,
+        "w": 104.5,
+        "h": 165.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 5.5,
+        "w": 104.5,
+        "h": 165.5
+      },
+      "sourceSize": {
+        "w": 115,
+        "h": 175
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Idle-05.png",
+      "frame": {
+        "x": 1185,
+        "y": 97.5,
+        "w": 104.5,
+        "h": 166
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 5,
+        "w": 104.5,
+        "h": 166
+      },
+      "sourceSize": {
+        "w": 115,
+        "h": 175
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-05.png",
+      "frame": {
+        "x": 1355,
+        "y": 98,
+        "w": 106,
+        "h": 167
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 28,
+        "y": 15.5,
+        "w": 106,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-06.png",
+      "frame": {
+        "x": 1526,
+        "y": 99,
+        "w": 107,
+        "h": 156.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 27.5,
+        "y": 26,
+        "w": 107,
+        "h": 156.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-12.png",
+      "frame": {
+        "x": 1686.5,
+        "y": 99.5,
+        "w": 108,
+        "h": 163.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 27,
+        "y": 19,
+        "w": 108,
+        "h": 163.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-05.png",
+      "frame": {
+        "x": 1854,
+        "y": 99.5,
+        "w": 141,
+        "h": 108.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 66,
+        "w": 141,
+        "h": 108.5
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-04.png",
+      "frame": {
+        "x": 2,
+        "y": 186,
+        "w": 113,
+        "h": 178.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24.5,
+        "y": 4,
+        "w": 113,
+        "h": 178.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-03.png",
+      "frame": {
+        "x": 184.5,
+        "y": 200.5,
+        "w": 141.5,
+        "h": 117.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 57,
+        "w": 141.5,
+        "h": 117.5
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-03.png",
+      "frame": {
+        "x": 330,
+        "y": 205.5,
+        "w": 113.5,
+        "h": 157.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 25,
+        "w": 113.5,
+        "h": 157.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-06.png",
+      "frame": {
+        "x": 491.5,
+        "y": 205.5,
+        "w": 140.5,
+        "h": 117.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 57,
+        "w": 140.5,
+        "h": 117.5
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-02.png",
+      "frame": {
+        "x": 636,
+        "y": 205.5,
+        "w": 119,
+        "h": 124.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 21.5,
+        "y": 58,
+        "w": 119,
+        "h": 124.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-02.png",
+      "frame": {
+        "x": 764.5,
+        "y": 206,
+        "w": 119,
+        "h": 136
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 35,
+        "y": 44,
+        "w": 119,
+        "h": 136
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Hide-02.png",
+      "frame": {
+        "x": 904.5,
+        "y": 206,
+        "w": 121.5,
+        "h": 165.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5,
+        "y": 6,
+        "w": 121.5,
+        "h": 165.5
+      },
+      "sourceSize": {
+        "w": 131.5,
+        "h": 176.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-10.png",
+      "frame": {
+        "x": 1074,
+        "y": 206,
+        "w": 122,
+        "h": 167.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 15,
+        "w": 122,
+        "h": 167.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-09.png",
+      "frame": {
+        "x": 1245.5,
+        "y": 208,
+        "w": 124.5,
+        "h": 131
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 51.5,
+        "w": 124.5,
+        "h": 131
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-13.png",
+      "frame": {
+        "x": 1380.5,
+        "y": 208,
+        "w": 126.5,
+        "h": 141.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 17.5,
+        "y": 41,
+        "w": 126.5,
+        "h": 141.5
+      },
+      "sourceSize": {
+        "w": 161.5,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-11.png",
+      "frame": {
+        "x": 1526,
+        "y": 211.5,
+        "w": 125,
+        "h": 172
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18.5,
+        "y": 10.5,
+        "w": 125,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-08.png",
+      "frame": {
+        "x": 1702,
+        "y": 211.5,
+        "w": 135.5,
+        "h": 130.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 52,
+        "w": 135.5,
+        "h": 130.5
+      },
+      "sourceSize": {
+        "w": 161.5,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-01.png",
+      "frame": {
+        "x": 1841.5,
+        "y": 212,
+        "w": 152.5,
+        "h": 130.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4.5,
+        "y": 52.5,
+        "w": 152.5,
+        "h": 130.5
+      },
+      "sourceSize": {
+        "w": 161.5,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-06.png",
+      "frame": {
+        "x": 2,
+        "y": 303,
+        "w": 140.5,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24.5,
+        "y": 41.5,
+        "w": 140.5,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Creep-07.png",
+      "frame": {
+        "x": 146.5,
+        "y": 322,
+        "w": 136,
+        "h": 141.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 41,
+        "w": 136,
+        "h": 141.5
+      },
+      "sourceSize": {
+        "w": 162,
+        "h": 187.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-02.png",
+      "frame": {
+        "x": 292,
+        "y": 323,
+        "w": 193.5,
+        "h": 138
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 45.5,
+        "y": 36.5,
+        "w": 193.5,
+        "h": 138
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-07.png",
+      "frame": {
+        "x": 489.5,
+        "y": 327,
+        "w": 141,
+        "h": 138
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 36.5,
+        "w": 141,
+        "h": 138
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-01.png",
+      "frame": {
+        "x": 634.5,
+        "y": 329,
+        "w": 140.5,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 4.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-08.png",
+      "frame": {
+        "x": 808.5,
+        "y": 331.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72.5,
+        "y": 4.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-09.png",
+      "frame": {
+        "x": 982.5,
+        "y": 332,
+        "w": 140.5,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 4.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-18.png",
+      "frame": {
+        "x": 1156.5,
+        "y": 336.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 4.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-20.png",
+      "frame": {
+        "x": 1330.5,
+        "y": 338.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72.5,
+        "y": 4.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-21.png",
+      "frame": {
+        "x": 1504.5,
+        "y": 340.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 4.5,
+        "w": 140.5,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-10.png",
+      "frame": {
+        "x": 1678.5,
+        "y": 346.5,
+        "w": 141,
+        "h": 168
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 6.5,
+        "w": 141,
+        "h": 168
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-19.png",
+      "frame": {
+        "x": 1850.5,
+        "y": 346.5,
+        "w": 141,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 4.5,
+        "w": 141,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-22.png",
+      "frame": {
+        "x": 2,
+        "y": 462,
+        "w": 141,
+        "h": 170
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 4.5,
+        "w": 141,
+        "h": 170
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-01.png",
+      "frame": {
+        "x": 176,
+        "y": 465,
+        "w": 156.5,
+        "h": 142.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 37.5,
+        "w": 156.5,
+        "h": 142.5
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-07.png",
+      "frame": {
+        "x": 336.5,
+        "y": 469,
+        "w": 143,
+        "h": 152.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 23,
+        "y": 27.5,
+        "w": 143,
+        "h": 152.5
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-11.png",
+      "frame": {
+        "x": 493,
+        "y": 473.5,
+        "w": 143.5,
+        "h": 169
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 70.5,
+        "y": 5.5,
+        "w": 143.5,
+        "h": 169
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-08.png",
+      "frame": {
+        "x": 666,
+        "y": 476,
+        "w": 172,
+        "h": 145
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8.5,
+        "y": 10,
+        "w": 172,
+        "h": 145
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-03.png",
+      "frame": {
+        "x": 842,
+        "y": 476.5,
+        "w": 147,
+        "h": 153.5
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 21,
+        "y": 26.5,
+        "w": 147,
+        "h": 153.5
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-04.png",
+      "frame": {
+        "x": 999.5,
+        "y": 481,
+        "w": 177.5,
+        "h": 151.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 5.5,
+        "y": 4.5,
+        "w": 177.5,
+        "h": 151.5
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Run-05.png",
+      "frame": {
+        "x": 1181,
+        "y": 483,
+        "w": 179.5,
+        "h": 159.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4.5,
+        "y": 20.5,
+        "w": 179.5,
+        "h": 159.5
+      },
+      "sourceSize": {
+        "w": 189,
+        "h": 184.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-16.png",
+      "frame": {
+        "x": 1364.5,
+        "y": 485,
+        "w": 242,
+        "h": 161
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 21.5,
+        "y": 13.5,
+        "w": 242,
+        "h": 161
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-17.png",
+      "frame": {
+        "x": 1610.5,
+        "y": 491.5,
+        "w": 212.5,
+        "h": 161
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36.5,
+        "y": 13.5,
+        "w": 212.5,
+        "h": 161
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-12.png",
+      "frame": {
+        "x": 1827,
+        "y": 491.5,
+        "w": 163,
+        "h": 169
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 61,
+        "y": 5.5,
+        "w": 163,
+        "h": 169
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-14.png",
+      "frame": {
+        "x": 2,
+        "y": 611.5,
+        "w": 264,
+        "h": 163.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10.5,
+        "y": 11,
+        "w": 264,
+        "h": 163.5
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-15.png",
+      "frame": {
+        "x": 270,
+        "y": 621,
+        "w": 264,
+        "h": 163.5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10.5,
+        "y": 11,
+        "w": 264,
+        "h": 163.5
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "Yeti_Throw-13.png",
+      "frame": {
+        "x": 538,
+        "y": 625,
+        "w": 275.5,
+        "h": 169
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4.5,
+        "y": 5.5,
+        "w": 275.5,
+        "h": 169
+      },
+      "sourceSize": {
+        "w": 284.5,
+        "h": 179.5
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.6",
+    "image": "yeti_test.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2023,
+      "h": 796
+    },
+    "scale": 0.5
+  }
+}
