@@ -20,5 +20,9 @@ class GameState extends FlxState {
 		FlxAssets.FONT_DEFAULT = "assets/fonts/OpenSans-Regular.ttf";
 		FlxG.autoPause = false;
 		FlxG.camera.antialiasing = true;
+
+		#if !debug
+		FlxG.mouse.visible = false;
+		#end
 	}
 }

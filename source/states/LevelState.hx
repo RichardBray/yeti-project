@@ -2,14 +2,11 @@ package states;
 
 import characters.Player;
 import flixel.math.FlxPoint;
-import utils.Controls;
 
 /**
  * @todo make abstract class
  */
 class LevelState extends GameState {
-	final controls:Controls = Controls.instance;
-
 	var player:Player;
 
 	override public function create() {
@@ -37,7 +34,7 @@ class LevelState extends GameState {
 	override public function update(elapsed:Float) {
 		super.update(elapsed);
 
-		if (controls.cross.check()) {
+		if (player.throwBtnPressed) {
 			createProjectilePath();
 		}
 	}
