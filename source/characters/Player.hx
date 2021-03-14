@@ -7,6 +7,7 @@ import utils.Controls;
 import utils.Helpers;
 
 enum States {
+	Throwing;
 	Sneaking;
 	Running;
 	Idle;
@@ -18,13 +19,11 @@ final class Player extends FlxSprite {
 	final controls:Controls = Controls.instance;
 
 	var playerState:States = States.Idle;
+	var seconds:Float = 0;
 	// - controls
 	var left = false;
 	var right = false;
 	var runBtnPressed = false;
-
-	public var throwBtnPressed = false;
-
 	// - control mods
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
@@ -33,11 +32,13 @@ final class Player extends FlxSprite {
 	var originalY:Float = 0;
 	var idleY:Float = 0;
 
+	public var throwBtnPressed = false;
+
 	public function new(x:Float = 0, y:Float = 0) {
 		super(x, y);
 
 		originalY = y;
-		idleY = y + 8;
+		idleY = y + 7;
 		drag.x = RUN_SPEED * 4;
 		frames = FlxAtlasFrames.fromTexturePackerJson("assets/images/yeti.png",
 			"assets/images/yeti.json");
@@ -47,6 +48,8 @@ final class Player extends FlxSprite {
 		animation.addByNames("sneaking",
 			Helpers.frameNames(13, "Yeti_Creep-"), 8);
 		animation.addByNames("running", Helpers.frameNames(8, "Yeti_Run-"), 10);
+		animation.addByNames("throwing",
+			Helpers.frameNames(22, "Yeti_Throw-"), 10);
 
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
@@ -72,11 +75,17 @@ final class Player extends FlxSprite {
 				movement(RUN_SPEED);
 				animation.play("running");
 				if (!runBtnPressed) playerState = States.Sneaking;
+			case States.Throwing:
+				animation.play("throwing");
 			case States.Idle:
 				velocity.x = 0;
 				animation.play("idle");
 				y = idleY;
-				if (singleDirectionPressed) playerState = States.Sneaking;
+				if (singleDirectionPressed) {
+					playerState = States.Sneaking;
+				} else if (throwBtnPressed) {
+					playerState = States.Throwing;
+				}
 		}
 	}
 
@@ -92,6 +101,7 @@ final class Player extends FlxSprite {
 	}
 
 	override function update(elapsed:Float) {
+		seconds += elapsed;
 		super.update(elapsed);
 		updateControls();
 		stateMachine();
