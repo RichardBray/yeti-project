@@ -3,6 +3,7 @@ package characters;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+
 import utils.Controls;
 import utils.Helpers;
 
@@ -16,10 +17,10 @@ enum States {
 final class Player extends FlxSprite {
 	final SNEAK_SPEED = 70;
 	final RUN_SPEED = 300;
-	final controls:Controls = Controls.instance;
+	final controls: Controls = Controls.instance;
 
-	var playerState:States = States.Idle;
-	var seconds:Float = 0;
+	var playerState: States = States.Idle;
+	var seconds: Float = 0;
 	// - controls
 	var left = false;
 	var right = false;
@@ -29,33 +30,42 @@ final class Player extends FlxSprite {
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
 	// - hack to fix idle heigh issue
-	var originalY:Float = 0;
-	var idleY:Float = 0;
+	var originalY: Float = 0;
+	var idleY: Float = 0;
 
 	public var throwBtnPressed = false;
 
-	public function new(x:Float = 0, y:Float = 0) {
+	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
 
 		originalY = y;
 		idleY = y + 7;
 		drag.x = RUN_SPEED * 4;
-		frames = FlxAtlasFrames.fromTexturePackerJson("assets/images/yeti.png",
-			"assets/images/yeti.json");
+		frames = FlxAtlasFrames.fromTexturePackerJson(
+			"assets/images/yeti.png",
+			"assets/images/yeti.json"
+		);
 
 		scale.set(0.75, 0.75);
 		animation.addByNames("idle", Helpers.frameNames(5, "Yeti_Idle-"), 5);
-		animation.addByNames("sneaking",
-			Helpers.frameNames(13, "Yeti_Creep-"), 8);
-		animation.addByNames("running", Helpers.frameNames(8, "Yeti_Run-"), 10);
-		animation.addByNames("throwing",
-			Helpers.frameNames(22, "Yeti_Throw-"), 10);
+		animation.addByNames(
+			"sneaking",
+			Helpers.frameNames(13, "Yeti_Creep-"),
+			8
+		);
+		animation.addByNames("running", Helpers.frameNames(8, "Yeti_Run-"),
+			10);
+		animation.addByNames(
+			"throwing",
+			Helpers.frameNames(22, "Yeti_Throw-"),
+			10
+		);
 
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
 	}
 
-	function movement(speed:Int) {
+	function movement(speed: Int) {
 		y = originalY;
 		if (bothDirectionsPressed || noDirectionPressed) {
 			playerState = States.Idle;
@@ -100,7 +110,7 @@ final class Player extends FlxSprite {
 		noDirectionPressed = !singleDirectionPressed;
 	}
 
-	override function update(elapsed:Float) {
+	override function update(elapsed: Float) {
 		seconds += elapsed;
 		super.update(elapsed);
 		updateControls();
