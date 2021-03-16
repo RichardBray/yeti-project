@@ -9,6 +9,7 @@ import utils.Helpers;
 
 enum States {
 	Throwing;
+	Gathering;
 	Sneaking;
 	Running;
 	Idle;
@@ -19,12 +20,12 @@ final class Player extends FlxSprite {
 	final RUN_SPEED = 300;
 	final controls: Controls = Controls.instance;
 
-	var playerState: States = States.Idle;
-	var seconds: Float = 0;
+	var throwSeconds: Float = 0;
 	// - controls
 	var left = false;
 	var right = false;
 	var runBtnPressed = false;
+	var throwBtnPressed = false;
 	// - control mods
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
@@ -33,7 +34,7 @@ final class Player extends FlxSprite {
 	var originalY: Float = 0;
 	var idleY: Float = 0;
 
-	public var throwBtnPressed = false;
+	public var playerState: States = States.Idle;
 
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
@@ -46,7 +47,7 @@ final class Player extends FlxSprite {
 			"assets/images/yeti.json"
 		);
 
-		scale.set(0.375, 0.375);
+		scale.set(0.75, 0.75);
 		animation.addByNames("idle", Helpers.frameNames(5, "Yeti_Idle-"), 5);
 		animation.addByNames(
 			"sneaking",
@@ -75,7 +76,7 @@ final class Player extends FlxSprite {
 		}
 	}
 
-	function stateMachine() {
+	function stateMachine(elapsed: Float) {
 		switch (playerState) {
 			case States.Sneaking:
 				movement(SNEAK_SPEED);
@@ -85,16 +86,30 @@ final class Player extends FlxSprite {
 				movement(RUN_SPEED);
 				animation.play("running");
 				if (!runBtnPressed) playerState = States.Sneaking;
-			case States.Throwing:
+			case States.Gathering:
 				animation.play("throwing");
+				throwSeconds += elapsed;
+				if (throwSeconds >= 1.5) {
+					animation.pause();
+					playerState = States.Throwing;
+				}
+				if (singleDirectionPressed) {
+					playerState = States.Sneaking;
+				}
+			case States.Throwing:
+				if (singleDirectionPressed) {
+					playerState = States.Sneaking;
+				}
 			case States.Idle:
 				velocity.x = 0;
+				throwSeconds = 0;
 				animation.play("idle");
 				y = idleY;
 				if (singleDirectionPressed) {
 					playerState = States.Sneaking;
-				} else if (throwBtnPressed) {
-					playerState = States.Throwing;
+				}
+				if (throwBtnPressed) {
+					playerState = States.Gathering;
 				}
 		}
 	}
@@ -111,9 +126,8 @@ final class Player extends FlxSprite {
 	}
 
 	override function update(elapsed: Float) {
-		seconds += elapsed;
 		super.update(elapsed);
 		updateControls();
-		stateMachine();
+		stateMachine(elapsed);
 	}
 }
