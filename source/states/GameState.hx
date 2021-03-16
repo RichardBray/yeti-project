@@ -18,9 +18,10 @@ class GameState extends FlxState {
 
 		bgColor = Colors.grey;
 		version = pjson.version;
-		add(new FlxText(version, 32).screenCenter());
 
 		FlxAssets.FONT_DEFAULT = "assets/fonts/OpenSans-Regular.ttf";
+		add(new FlxText(version, 32).screenCenter());
+
 		FlxG.autoPause = false;
 		FlxG.camera.antialiasing = true;
 

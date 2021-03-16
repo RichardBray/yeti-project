@@ -46,7 +46,7 @@ final class Player extends FlxSprite {
 			"assets/images/yeti.json"
 		);
 
-		scale.set(0.75, 0.75);
+		scale.set(0.375, 0.375);
 		animation.addByNames("idle", Helpers.frameNames(5, "Yeti_Idle-"), 5);
 		animation.addByNames(
 			"sneaking",
