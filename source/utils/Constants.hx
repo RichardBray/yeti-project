@@ -1,5 +1,5 @@
 package utils;
 
 final class Constants {
-	public static final gameFont:String = "assets/fonts/OpenSans-Regular.ttf";
+	public static inline final gameFont:String = "assets/fonts/OpenSans-Regular.ttf";
 }
