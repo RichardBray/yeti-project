@@ -24,9 +24,11 @@ class GameState extends FlxState {
 
 		FlxG.autoPause = false;
 		FlxG.camera.antialiasing = true;
-		flixel.addons.studio.FlxStudio.create();
+
 		#if !debug
 		FlxG.mouse.visible = false;
+		#else
+		flixel.addons.studio.FlxStudio.create();
 		#end
 	}
 }
