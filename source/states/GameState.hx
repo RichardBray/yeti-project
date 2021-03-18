@@ -26,7 +26,7 @@ class GameState extends FlxState {
 		FlxG.camera.antialiasing = true;
 
 		#if !debug
-		FlxG.mouse.visible = false;
+		FlxG.mouse.visible = false; // ignore this line
 		#else
 		flixel.addons.studio.FlxStudio.create();
 		#end
