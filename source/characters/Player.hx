@@ -3,12 +3,12 @@ package characters;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.math.FlxPoint;
 
 import utils.Controls;
 import utils.Helpers;
 
 enum States {
-	Throwing;
 	Gathering;
 	Sneaking;
 	Running;
@@ -34,7 +34,8 @@ final class Player extends FlxSprite {
 	var originalY: Float = 0;
 	var idleY: Float = 0;
 
-	public var playerState: States = States.Idle;
+	public var state(default, null): States = States.Idle;
+	public var throwPosition(default, null): FlxPoint;
 
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
@@ -69,7 +70,7 @@ final class Player extends FlxSprite {
 	function movement(speed: Int) {
 		y = originalY;
 		if (bothDirectionsPressed || noDirectionPressed) {
-			playerState = States.Idle;
+			state = States.Idle;
 		} else {
 			velocity.x = right ? speed : -speed;
 			facing = right ? FlxObject.RIGHT : FlxObject.LEFT;
@@ -77,28 +78,23 @@ final class Player extends FlxSprite {
 	}
 
 	function stateMachine(elapsed: Float) {
-		switch (playerState) {
+		switch (state) {
 			case States.Sneaking:
 				movement(SNEAK_SPEED);
 				animation.play("sneaking");
-				if (runBtnPressed) playerState = States.Running;
+				if (runBtnPressed) state = States.Running;
 			case States.Running:
 				movement(RUN_SPEED);
 				animation.play("running");
-				if (!runBtnPressed) playerState = States.Sneaking;
+				if (!runBtnPressed) state = States.Sneaking;
 			case States.Gathering:
 				animation.play("throwing");
 				throwSeconds += elapsed;
 				if (throwSeconds >= 1.5) {
 					animation.pause();
-					playerState = States.Throwing;
 				}
 				if (singleDirectionPressed) {
-					playerState = States.Sneaking;
-				}
-			case States.Throwing:
-				if (singleDirectionPressed) {
-					playerState = States.Sneaking;
+					state = States.Sneaking;
 				}
 			case States.Idle:
 				velocity.x = 0;
@@ -106,10 +102,11 @@ final class Player extends FlxSprite {
 				animation.play("idle");
 				y = idleY;
 				if (singleDirectionPressed) {
-					playerState = States.Sneaking;
+					state = States.Sneaking;
 				}
 				if (throwBtnPressed) {
-					playerState = States.Gathering;
+					throwPosition = new FlxPoint(x, y);
+					state = States.Gathering;
 				}
 		}
 	}
