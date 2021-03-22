@@ -30,18 +30,12 @@ final class Player extends FlxSprite {
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
-	// - hack to fix idle heigh issue
-	var originalY: Float = 0;
-	var idleY: Float = 0;
 
 	public var state(default, null): States = States.Idle;
 	public var throwPosition(default, null): FlxPoint;
 
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
-
-		originalY = y;
-		idleY = y + 7;
 		drag.x = RUN_SPEED * 4;
 		frames = FlxAtlasFrames.fromTexturePackerJson(
 			"assets/images/yeti.png",
@@ -49,17 +43,17 @@ final class Player extends FlxSprite {
 		);
 
 		scale.set(0.75, 0.75);
-		animation.addByNames("idle", Helpers.frameNames(5, "Yeti_Idle-"), 5);
+		animation.addByNames("idle", Helpers.frameNames(5, "YETI_IDLE_"), 5);
 		animation.addByNames(
 			"sneaking",
-			Helpers.frameNames(13, "Yeti_Creep-"),
+			Helpers.frameNames(13, "YETI_CREEP_"),
 			8
 		);
-		animation.addByNames("running", Helpers.frameNames(8, "Yeti_Run-"),
+		animation.addByNames("running", Helpers.frameNames(8, "YETI_RUN_"),
 			10);
 		animation.addByNames(
 			"throwing",
-			Helpers.frameNames(22, "Yeti_Throw-"),
+			Helpers.frameNames(22, "YETI_THROW_"),
 			10
 		);
 
@@ -68,7 +62,6 @@ final class Player extends FlxSprite {
 	}
 
 	function movement(speed: Int) {
-		y = originalY;
 		if (bothDirectionsPressed || noDirectionPressed) {
 			state = States.Idle;
 		} else {
@@ -100,7 +93,6 @@ final class Player extends FlxSprite {
 				velocity.x = 0;
 				throwSeconds = 0;
 				animation.play("idle");
-				y = idleY;
 				if (singleDirectionPressed) {
 					state = States.Sneaking;
 				}
