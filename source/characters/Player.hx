@@ -9,6 +9,7 @@ import utils.Controls;
 import utils.Helpers;
 
 enum States {
+	Throwing;
 	Gathering;
 	Sneaking;
 	Running;
@@ -21,6 +22,7 @@ final class Player extends FlxSprite {
 	final controls: Controls = Controls.instance;
 
 	var throwSeconds: Float = 0;
+	var finishThrowSeconds: Float = 0;
 	// - controls
 	var left = false;
 	var right = false;
@@ -34,6 +36,7 @@ final class Player extends FlxSprite {
 	public var state(default, null): States = States.Idle;
 	public var throwPosition(default, null): FlxPoint;
 
+	// @formatter:off
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
 		drag.x = RUN_SPEED * 4;
@@ -43,24 +46,32 @@ final class Player extends FlxSprite {
 		);
 
 		scale.set(0.75, 0.75);
-		animation.addByNames("idle", Helpers.frameNames(5, "YETI_IDLE_"), 5);
+		animation.addByNames(
+			"idle",
+			Helpers.frameNames(5, "YETI_IDLE_"),
+			5
+		);
 		animation.addByNames(
 			"sneaking",
 			Helpers.frameNames(13, "YETI_CREEP_"),
 			8
 		);
-		animation.addByNames("running", Helpers.frameNames(8, "YETI_RUN_"),
-			10);
+		animation.addByNames(
+			"running",
+			Helpers.frameNames(8, "YETI_RUN_"),
+			10
+		);
 		animation.addByNames(
 			"throwing",
 			Helpers.frameNames(22, "YETI_THROW_"),
-			10
+			12
 		);
 
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
 	}
 
+	// @formatter:on
 	function movement(speed: Int) {
 		if (bothDirectionsPressed || noDirectionPressed) {
 			state = States.Idle;
@@ -70,32 +81,44 @@ final class Player extends FlxSprite {
 		}
 	}
 
+	// @formatter:off
 	function stateMachine(elapsed: Float) {
 		switch (state) {
 			case States.Sneaking:
 				movement(SNEAK_SPEED);
 				animation.play("sneaking");
-				if (runBtnPressed) state = States.Running;
+				if (runBtnPressed)
+					state = States.Running;
 			case States.Running:
 				movement(RUN_SPEED);
 				animation.play("running");
-				if (!runBtnPressed) state = States.Sneaking;
+				if (!runBtnPressed)
+					state = States.Sneaking;
 			case States.Gathering:
+				var animPaused = false;
 				animation.play("throwing");
 				throwSeconds += elapsed;
-				if (throwSeconds >= 1.5) {
+				if (throwSeconds >= 1.2) {
 					animation.pause();
+					animPaused = true;
 				}
-				if (singleDirectionPressed) {
+				if (throwBtnPressed && animPaused)
+					state = States.Throwing;
+				if (singleDirectionPressed)
 					state = States.Sneaking;
+			case States.Throwing:
+				animation.resume();
+				finishThrowSeconds += elapsed;
+				if (finishThrowSeconds >= 0.5) {
+					state = States.Idle;
 				}
 			case States.Idle:
 				velocity.x = 0;
 				throwSeconds = 0;
+				finishThrowSeconds = 0;
 				animation.play("idle");
-				if (singleDirectionPressed) {
+				if (singleDirectionPressed)
 					state = States.Sneaking;
-				}
 				if (throwBtnPressed) {
 					throwPosition = new FlxPoint(x, y);
 					state = States.Gathering;
@@ -103,6 +126,7 @@ final class Player extends FlxSprite {
 		}
 	}
 
+	// @formatter:on
 	function updateControls() {
 		left = controls.left.check();
 		right = controls.right.check();

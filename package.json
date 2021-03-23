@@ -1,8 +1,8 @@
 {
-  "name": "haxe-flixel-template",
+  "name": "yeti-game",
   "version": "0.0.1",
-  "description": "HaxeFlixel game template powered by Lix and Nodejs. The fastest way to start building a HaxeFlixel game.",
-  "main": "index.js",
+  "description": "Haxe based 2D stealth puzzle game. Help the Yeti find a new home and not get spotted by humans",
+  "main": "source/Main.hx",
   "scripts": {
     "start": "npx concurrently \"npm run watch\" \"npm run server\"",
     "watch": "watchman-make -p 'source/**/*.hx' -r 'sh watcher.sh'",
