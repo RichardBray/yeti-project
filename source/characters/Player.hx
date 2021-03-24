@@ -50,6 +50,8 @@ final class Player extends FlxSprite {
 			"assets/images/characters/yeti.json"
 		);
 
+		Helpers.changeHitbox(247, 90, this, 60);
+		trace(width, height, "sprite hitbox");
 		scale.set(0.75, 0.75);
 		animation.addByNames(
 			"idle",
