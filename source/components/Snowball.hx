@@ -9,6 +9,8 @@ import haxe.ds.Vector;
 import utils.Colors;
 
 final class Snowball extends FlxSprite {
+	static inline final THROW_SPEED = 1100;
+
 	// - snowball gathered to be thrown
 	public var gathered(default, null) = false;
 
@@ -41,7 +43,9 @@ final class Snowball extends FlxSprite {
   // @formatter:on
 	public function followPath() {
 		alpha = 1;
-		path.start(null, 800, FlxPath.FORWARD);
+		path.start(null, THROW_SPEED, FlxPath.FORWARD);
 		gathered = false;
 	}
+
+	function fadeOut() {}
 }

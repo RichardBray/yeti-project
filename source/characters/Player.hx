@@ -1,5 +1,6 @@
 package characters;
 
+import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -19,9 +20,12 @@ enum States {
 final class Player extends FlxSprite {
 	static inline final SNEAK_SPEED = 70;
 	static inline final RUN_SPEED = 350;
+	static inline final RUN_SHAKE_INTENSITY = 0.0012;
+	static inline final RUN_SHAKE_DURATION = 0.15;
 
 	final controls = Controls.instance;
 
+	// - timers
 	var throwSeconds: Float = 0;
 	var finishThrowSeconds: Float = 0;
 	// - controls
@@ -42,8 +46,8 @@ final class Player extends FlxSprite {
 		super(x, y);
 		drag.x = RUN_SPEED * 4;
 		frames = FlxAtlasFrames.fromTexturePackerJson(
-			"assets/images/yeti.png",
-			"assets/images/yeti.json"
+			"assets/images/characters/yeti.png",
+			"assets/images/characters/yeti.json"
 		);
 
 		scale.set(0.75, 0.75);
@@ -90,11 +94,14 @@ final class Player extends FlxSprite {
 				animation.play("sneaking");
 				if (runBtnPressed)
 					state = Running;
+
 			case Running:
 				movement(RUN_SPEED);
+				FlxG.camera.shake(RUN_SHAKE_INTENSITY, RUN_SHAKE_DURATION);
 				animation.play("running");
 				if (!runBtnPressed)
 					state = Sneaking;
+
 			case Gathering:
 				var animPaused = false;
 				animation.play("throwing");
@@ -107,12 +114,13 @@ final class Player extends FlxSprite {
 					state = Throwing;
 				if (singleDirectionPressed)
 					state = Sneaking;
+
 			case Throwing:
 				animation.resume();
 				finishThrowSeconds += elapsed;
-				if (finishThrowSeconds >= 0.5) {
+				if (finishThrowSeconds >= 0.5)
 					state = Idle;
-				}
+
 			case Idle:
 				velocity.x = 0;
 				throwSeconds = 0;

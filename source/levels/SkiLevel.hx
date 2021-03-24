@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 
 import states.LevelState;
@@ -11,8 +12,8 @@ final class SkiLevel extends LevelState {
 		super.create();
 		prepareLevel(90, 337);
 		// - delete when real ground added
-		final tempGround = new FlxSprite(0, 585);
-		tempGround.makeGraphic(1920, 100, Colors.white);
+		final tempGround = new FlxSprite(0, 526);
+		tempGround.makeGraphic(FlxG.width, 100, Colors.white);
 		add(tempGround);
 	}
 }

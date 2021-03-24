@@ -5,7 +5,7 @@ import characters.Player;
 import components.Snowball;
 import components.SnowballPaths;
 
-import flixel.FlxG;
+import flixel.FlxObject;
 
 /**
  * @todo make abstract class
@@ -35,7 +35,11 @@ class LevelState extends GameState {
 		super.update(elapsed);
 
 		if (player.state == Gathering) {
-			snowballPaths.createThrowPath(player.throwPosition, this);
+			snowballPaths.createThrowPath(
+				player.throwPosition,
+				this,
+				player.facing
+			);
 			snowball.addThrowPath(snowballPaths.line, player.throwPosition);
 		} else {
 			snowballPaths.killDots();
@@ -43,10 +47,6 @@ class LevelState extends GameState {
 
 		if (player.state == Throwing && snowball.gathered) {
 			snowball.followPath();
-		}
-
-		if (player.state == Running) {
-			FlxG.camera.shake(0.004, 0.15);
 		}
 	}
 }

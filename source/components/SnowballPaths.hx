@@ -1,5 +1,6 @@
 package components;
 
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxPoint;
@@ -24,16 +25,25 @@ final class SnowballPaths {
 
 	public function new() {}
 
+	// @formatter:off
 	/**
 	 * Paths for snowball to follow
+	 *
+	 * @param throwPos player throw position
+	 * @param levelState used to add dots to level
+	 * @param playerFacing used to determine path position
 	 */
-	// @formatter:off
 	public function createThrowPath(
 		throwPos: FlxPoint,
-		levelState: LevelState
+		levelState: LevelState,
+		playerFacing: Int
 	) {
 		playerThrowPos = throwPos;
 		final lowestTimeValue = timeValue() / NO_OF_POINTS;
+		// Flip dots if based on player facing
+		throwVelocity.x = (playerFacing == FlxObject.LEFT)
+			? -Math.abs(throwVelocity.x)
+			: Math.abs(throwVelocity.x);
 
 		for (i in 0...NO_OF_POINTS) {
 			final time = lowestTimeValue * i;
@@ -66,8 +76,8 @@ final class SnowballPaths {
 
 	/**
 	 * Formulas for trajectory x and y coords
-	 * x = startingPoint.x + throwVelocity.x * time
-	 * y = startingPoint.y + (throwVelocity.y * time) - (gravity * time(2) / 2)
+	 * x = startingPoint.x + velocity.x * time
+	 * y = startingPoint.y + (velocity.y * time) - (gravity * time(2) / 2)
 	 *
 	 * @param time
 	 */
