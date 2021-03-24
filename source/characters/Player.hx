@@ -17,9 +17,10 @@ enum States {
 }
 
 final class Player extends FlxSprite {
-	final SNEAK_SPEED = 70;
-	final RUN_SPEED = 300;
-	final controls: Controls = Controls.instance;
+	static inline final SNEAK_SPEED = 70;
+	static inline final RUN_SPEED = 350;
+
+	final controls = Controls.instance;
 
 	var throwSeconds: Float = 0;
 	var finishThrowSeconds: Float = 0;
@@ -33,7 +34,7 @@ final class Player extends FlxSprite {
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
 
-	public var state(default, null): States = States.Idle;
+	public var state(default, null): States = Idle;
 	public var throwPosition(default, null): FlxPoint;
 
 	// @formatter:off
@@ -74,7 +75,7 @@ final class Player extends FlxSprite {
 	// @formatter:on
 	function movement(speed: Int) {
 		if (bothDirectionsPressed || noDirectionPressed) {
-			state = States.Idle;
+			state = Idle;
 		} else {
 			velocity.x = right ? speed : -speed;
 			facing = right ? FlxObject.RIGHT : FlxObject.LEFT;
@@ -84,17 +85,17 @@ final class Player extends FlxSprite {
 	// @formatter:off
 	function stateMachine(elapsed: Float) {
 		switch (state) {
-			case States.Sneaking:
+			case Sneaking:
 				movement(SNEAK_SPEED);
 				animation.play("sneaking");
 				if (runBtnPressed)
-					state = States.Running;
-			case States.Running:
+					state = Running;
+			case Running:
 				movement(RUN_SPEED);
 				animation.play("running");
 				if (!runBtnPressed)
-					state = States.Sneaking;
-			case States.Gathering:
+					state = Sneaking;
+			case Gathering:
 				var animPaused = false;
 				animation.play("throwing");
 				throwSeconds += elapsed;
@@ -103,25 +104,25 @@ final class Player extends FlxSprite {
 					animPaused = true;
 				}
 				if (throwBtnPressed && animPaused)
-					state = States.Throwing;
+					state = Throwing;
 				if (singleDirectionPressed)
-					state = States.Sneaking;
-			case States.Throwing:
+					state = Sneaking;
+			case Throwing:
 				animation.resume();
 				finishThrowSeconds += elapsed;
 				if (finishThrowSeconds >= 0.5) {
-					state = States.Idle;
+					state = Idle;
 				}
-			case States.Idle:
+			case Idle:
 				velocity.x = 0;
 				throwSeconds = 0;
 				finishThrowSeconds = 0;
 				animation.play("idle");
 				if (singleDirectionPressed)
-					state = States.Sneaking;
+					state = Sneaking;
 				if (throwBtnPressed) {
 					throwPosition = new FlxPoint(x, y);
-					state = States.Gathering;
+					state = Gathering;
 				}
 		}
 	}
