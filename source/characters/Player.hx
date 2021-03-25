@@ -33,7 +33,7 @@ final class Player extends FlxSprite {
 	var right = false;
 	var runBtnPressed = false;
 	var throwBtnPressed = false;
-	// - control mods
+	// - control modificaitons
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
@@ -51,8 +51,8 @@ final class Player extends FlxSprite {
 		);
 
 		Helpers.changeHitbox(247, 90, this, 60);
-		trace(width, height, "sprite hitbox");
 		scale.set(0.75, 0.75);
+
 		animation.addByNames(
 			"idle",
 			Helpers.frameNames(5, "YETI_IDLE_"),
@@ -120,7 +120,11 @@ final class Player extends FlxSprite {
 			case Throwing:
 				animation.resume();
 				finishThrowSeconds += elapsed;
+				// Hack to prevent player from spamming throw buttom
+				// and seeing the snowball in the path too early
 				if (finishThrowSeconds >= 0.5)
+					animation.play("idle");
+				if (finishThrowSeconds >= 0.85)
 					state = Idle;
 
 			case Idle:
@@ -141,8 +145,8 @@ final class Player extends FlxSprite {
 	function updateControls() {
 		left = controls.left.check();
 		right = controls.right.check();
-		runBtnPressed = controls.circle.check();
-		throwBtnPressed = controls.cross.check();
+		runBtnPressed = controls.cross.check();
+		throwBtnPressed = controls.circle.check();
 
 		bothDirectionsPressed = left && right;
 		singleDirectionPressed = left || right;

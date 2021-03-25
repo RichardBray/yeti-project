@@ -5,6 +5,7 @@ import characters.Player;
 import components.Snowball;
 import components.SnowballPaths;
 
+import flixel.FlxG;
 import flixel.FlxObject;
 
 /**
@@ -14,12 +15,17 @@ class LevelState extends GameState {
 	var player: Player;
 	var snowball: Snowball;
 	var snowballPaths: SnowballPaths;
+	var leftBound: FlxObject;
 
 	override public function create() {
 		super.create();
 	}
 
 	function prepareLevel(x: Float = 0, y: Float = 0) {
+		// - add left bound
+		leftBound = new FlxObject(0, 0, 5, FlxG.height);
+		leftBound.immovable = true;
+		add(leftBound);
 		// - add player
 		player = new Player(x, y);
 		add(player);
@@ -48,5 +54,7 @@ class LevelState extends GameState {
 		if (player.state == Throwing && snowball.gathered) {
 			snowball.followPath();
 		}
+
+		FlxG.collide(player, leftBound);
 	}
 }

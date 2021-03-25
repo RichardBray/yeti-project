@@ -12,7 +12,7 @@ import states.LevelState;
 import utils.Colors;
 
 final class SnowballPaths {
-	static inline final Y_LIMIT = 200;
+	static inline final Y_LIMIT = 220;
 	static inline final GRAVITY = 981;
 	static inline final NO_OF_POINTS = 20;
 
