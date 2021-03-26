@@ -18,7 +18,7 @@ enum States {
 }
 
 final class Player extends FlxSprite {
-	static inline final SNEAK_SPEED = 70;
+	static inline final SNEAK_SPEED = 100;
 	static inline final RUN_SPEED = 350;
 	static inline final RUN_SHAKE_INTENSITY = 0.0012;
 	static inline final RUN_SHAKE_DURATION = 0.15;
@@ -51,7 +51,6 @@ final class Player extends FlxSprite {
 		);
 
 		Helpers.changeHitbox(247, 90, this, 60);
-		scale.set(0.75, 0.75);
 
 		animation.addByNames(
 			"idle",

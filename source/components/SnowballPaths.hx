@@ -12,7 +12,7 @@ import states.LevelState;
 import utils.Colors;
 
 final class SnowballPaths {
-	static inline final Y_LIMIT = 220;
+	static inline final Y_LIMIT = 190;
 	static inline final GRAVITY = 981;
 	static inline final NO_OF_POINTS = 20;
 
@@ -64,7 +64,7 @@ final class SnowballPaths {
 	 */
 	public function prepareDots() {
 		for (_ in 0...NO_OF_POINTS) {
-			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, Colors.white);
+			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, Colors.red);
 			dot.alpha = 0;
 			grpDots.add(dot);
 		}
