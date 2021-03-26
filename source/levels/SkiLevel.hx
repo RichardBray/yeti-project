@@ -1,5 +1,6 @@
 package levels;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 
 import states.LevelState;
@@ -7,12 +8,20 @@ import states.LevelState;
 import utils.Colors;
 
 final class SkiLevel extends LevelState {
+	var tempGround: FlxSprite;
+
 	override public function create() {
 		super.create();
-		createPlayer(90, 337);
+		prepareLevel(90, 396);
 		// - delete when real ground added
-		final tempGround = new FlxSprite(0, 585);
-		tempGround.makeGraphic(1920, 100, Colors.white);
+		tempGround = new FlxSprite(0, 526);
+		tempGround.makeGraphic(FlxG.width, 100, Colors.white);
+		tempGround.immovable = true;
 		add(tempGround);
+	}
+
+	override public function update(elapsed: Float) {
+		super.update(elapsed);
+		FlxG.collide(snowball, tempGround);
 	}
 }

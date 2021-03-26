@@ -1,41 +1,60 @@
 package states;
 
 import characters.Player;
-import flixel.math.FlxPoint;
+
+import components.Snowball;
+import components.SnowballPaths;
+
+import flixel.FlxG;
+import flixel.FlxObject;
 
 /**
  * @todo make abstract class
  */
 class LevelState extends GameState {
-	var player:Player;
+	var player: Player;
+	var snowball: Snowball;
+	var snowballPaths: SnowballPaths;
+	var leftBound: FlxObject;
 
 	override public function create() {
 		super.create();
 	}
 
-	public function createPlayer(x:Float = 0, y:Float = 0) {
+	function prepareLevel(x: Float = 0, y: Float = 0) {
+		// - add left bound
+		leftBound = new FlxObject(0, 0, 5, FlxG.height);
+		leftBound.immovable = true;
+		add(leftBound);
+		// - add player
 		player = new Player(x, y);
 		add(player);
+		// - prepare snowball path sprites
+		snowballPaths = new SnowballPaths();
+		snowballPaths.prepareDots();
+		// - add snowball
+		snowball = new Snowball(0, 0);
+		add(snowball);
 	}
 
-	/**
-	 * Paths for snowball to follow
-	 */
-	function createProjectilePath() {
-		var points:Array<FlxPoint> = [];
-
-		for (i in 0...30) {
-			points.push(new FlxPoint(0, 1 * i));
-		}
-		trace(points);
-		// return points;
-	}
-
-	override public function update(elapsed:Float) {
+	override public function update(elapsed: Float) {
 		super.update(elapsed);
 
-		if (player.throwBtnPressed) {
-			createProjectilePath();
+		if (player.state == Gathering) {
+			snowballPaths.createThrowPath(
+				player.throwPosition,
+				this,
+				player.facing
+			);
+			snowball.addThrowPath(snowballPaths.line, player.throwPosition);
+		} else {
+			snowballPaths.killDots();
 		}
+
+		if (player.state == Throwing && snowball.gathered) {
+			snowball.followPath();
+		}
+
+		FlxG.collide(player, leftBound);
 	}
 }
