@@ -1,6 +1,6 @@
 {
   "name": "yeti-game",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Haxe based 2D stealth puzzle game. Help the Yeti find a new home and not get spotted by humans",
   "main": "source/Main.hx",
   "scripts": {
