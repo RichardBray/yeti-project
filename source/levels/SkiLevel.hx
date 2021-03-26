@@ -19,9 +19,4 @@ final class SkiLevel extends LevelState {
 		tempGround.immovable = true;
 		add(tempGround);
 	}
-
-	override public function update(elapsed: Float) {
-		super.update(elapsed);
-		FlxG.collide(snowball, tempGround);
-	}
 }
