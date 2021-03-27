@@ -1,5 +1,7 @@
 package levels;
 
+import components.FlagLeft;
+import components.FlagRight;
 import components.TreeMulti;
 import components.TreeSingle;
 
@@ -13,6 +15,8 @@ final class SkiLevel extends LevelState {
 	var foreground: FlxSprite;
 	var treeSingle: FlxSprite;
 	var treeMulti: FlxSprite;
+	var flagLeft: FlxSprite;
+	var flagRight: FlxSprite;
 
 	override public function create() {
 		super.create();
@@ -39,5 +43,10 @@ final class SkiLevel extends LevelState {
 			529
 		);
 		add(foreground);
+		// - flags
+		flagLeft = new FlagLeft(414, 615);
+		add(flagLeft);
+		flagRight = new FlagRight(1464, 834);
+		add(flagRight);
 	}
 }
