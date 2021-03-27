@@ -19,7 +19,7 @@ enum States {
 
 final class Player extends FlxSprite {
 	static inline final SNEAK_SPEED = 100;
-	static inline final RUN_SPEED = 350;
+	static inline final RUN_SPEED = 400;
 	static inline final RUN_SHAKE_INTENSITY = 0.0012;
 	static inline final RUN_SHAKE_DURATION = 0.15;
 

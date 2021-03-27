@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RichardBray/game-jam-template.git"
+    "url": "git+https://github.com/RichardBray/yeti-project.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RichardBray/game-jam-template/issues"
+    "url": "https://github.com/RichardBray/yeti-project/issues"
   },
-  "homepage": "https://github.com/RichardBray/game-jam-template#readme",
+  "homepage": "https://github.com/RichardBray/yeti-project#readme",
   "dependencies": {
     "concurrently": "^5.2.0",
     "http-server": "^0.12.3"
