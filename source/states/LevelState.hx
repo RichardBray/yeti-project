@@ -21,19 +21,31 @@ class LevelState extends GameState {
 		super.create();
 	}
 
-	function prepareLevel(x: Float = 0, y: Float = 0) {
-		// - add left bound
+	/**
+	 * Elements that need to be prepared for all the levels
+	 *
+	 * @param playerX Starting x pos
+	 * @param playerY Starting y pos
+	 */
+	function prepareLevel(playerX: Float = 0, playerY: Float = 0) {
+		// - left bound
 		leftBound = new FlxObject(0, 0, 5, FlxG.height);
 		leftBound.immovable = true;
 		add(leftBound);
-		// - add player
-		player = new Player(x, y);
-		add(player);
+		// - prepare player
+		player = new Player(playerX, playerY);
 		// - prepare snowball path sprites
 		snowballPaths = new SnowballPaths();
 		snowballPaths.prepareDots();
-		// - add snowball
+		// - prepare snowball
 		snowball = new Snowball(0, 0);
+	}
+
+	/**
+	 * Seperate add method for level ordering purposes
+	 */
+	function addPlayer() {
+		add(player);
 		add(snowball);
 	}
 

@@ -10,6 +10,7 @@ import utils.Controls;
 import utils.Helpers;
 
 enum States {
+	Hiding;
 	Throwing;
 	Gathering;
 	Sneaking;
@@ -37,6 +38,7 @@ final class Player extends FlxSprite {
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
+	var hidePressed = false;
 
 	public var state(default, null): States = Idle;
 	public var throwPosition(default, null): FlxPoint;
@@ -71,6 +73,11 @@ final class Player extends FlxSprite {
 			"throwing",
 			Helpers.frameNames(22, "YETI_THROW_"),
 			12
+		);
+		animation.addByNames(
+			"hiding",
+			Helpers.frameNames(5, "YETI_HIDE_"),
+			5
 		);
 
 		setFacingFlip(FlxObject.LEFT, true, false);
@@ -126,6 +133,10 @@ final class Player extends FlxSprite {
 				if (finishThrowSeconds >= 0.85)
 					state = Idle;
 
+			case Hiding:
+				animation.play("hiding");
+				if (hidePressed)
+					state = Idle;
 			case Idle:
 				velocity.x = 0;
 				throwSeconds = 0;
@@ -137,6 +148,8 @@ final class Player extends FlxSprite {
 					throwPosition = new FlxPoint(x, y);
 					state = Gathering;
 				}
+				if (hidePressed)
+					state = Hiding;
 		}
 	}
 

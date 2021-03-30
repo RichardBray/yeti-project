@@ -13,6 +13,7 @@ npm run release -- --release-as major
 ```sh
 git push --follow-tags origin main
 ```
+
 lix install gh:Dovyski/flixel-studio
 lix install haxelib:hxmath#0.18.0
 

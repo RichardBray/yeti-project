@@ -20,6 +20,8 @@ final class SkiLevel extends LevelState {
 
 	override public function create() {
 		super.create();
+		// - general
+		prepareLevel(54, 400);
 		// - background
 		background = new FlxSprite(0, 0);
 		background.loadGraphic(
@@ -31,10 +33,10 @@ final class SkiLevel extends LevelState {
 		// - trees
 		treeSingle = new TreeSingle(1515, 242);
 		add(treeSingle);
-		treeMulti = new TreeMulti(187, 262);
+		treeMulti = new TreeMulti(267, 262, player);
 		add(treeMulti);
-		// - general stuff
-		prepareLevel(90, 400);
+		// - player
+		addPlayer();
 		// - foreground
 		foreground = new FlxSprite(0, 551);
 		foreground.loadGraphic(
@@ -44,9 +46,9 @@ final class SkiLevel extends LevelState {
 		);
 		add(foreground);
 		// - flags
-		flagLeft = new FlagLeft(414, 615);
+		flagLeft = new FlagLeft(485, 614);
 		add(flagLeft);
-		flagRight = new FlagRight(1464, 834);
+		flagRight = new FlagRight(1386, 835);
 		add(flagRight);
 	}
 }
