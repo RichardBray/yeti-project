@@ -3,12 +3,13 @@ package utils;
 import flixel.input.actions.FlxAction.FlxActionDigital;
 
 final class Controls {
-	public var left:FlxActionDigital;
-	public var right:FlxActionDigital;
-	public var circle:FlxActionDigital;
-	public var cross:FlxActionDigital;
+	public var left: FlxActionDigital;
+	public var right: FlxActionDigital;
+	public var up: FlxActionDigital;
+	public var circle: FlxActionDigital;
+	public var cross: FlxActionDigital;
 
-	public static final instance:Controls = new Controls();
+	public static final instance: Controls = new Controls();
 
 	private function new() {
 		initInputs();
@@ -18,6 +19,7 @@ final class Controls {
 	function initInputs() {
 		left = new FlxActionDigital();
 		right = new FlxActionDigital();
+		up = new FlxActionDigital();
 		circle = new FlxActionDigital();
 		cross = new FlxActionDigital();
 	}
@@ -29,6 +31,9 @@ final class Controls {
 		// - right
 		right.addKey(RIGHT, PRESSED);
 		right.addKey(D, PRESSED);
+		// - up
+		up.addKey(UP, PRESSED);
+		up.addKey(W, PRESSED);
 		// - circle
 		circle.addKey(SHIFT, PRESSED);
 		// - cross

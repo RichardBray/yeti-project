@@ -3,7 +3,6 @@ package characters;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.math.FlxPoint;
 
 import utils.Controls;
@@ -38,7 +37,6 @@ final class Player extends FlxSprite {
 	var bothDirectionsPressed = false;
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
-	var hidePressed = false;
 
 	public var state(default, null): States = Idle;
 	public var throwPosition(default, null): FlxPoint;
@@ -47,10 +45,7 @@ final class Player extends FlxSprite {
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
 		drag.x = RUN_SPEED * 4;
-		frames = FlxAtlasFrames.fromTexturePackerJson(
-			"assets/images/characters/yeti.png",
-			"assets/images/characters/yeti.json"
-		);
+		frames = Helpers.loadFrames("characters/yeti");
 
 		Helpers.changeHitbox(247, 90, this, 60);
 
@@ -82,6 +77,16 @@ final class Player extends FlxSprite {
 
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
+	}
+
+	public function hidePlayer() {
+		state = Hiding;
+		alpha = 0;
+	}
+
+	public function showPlayer() {
+		state = Idle;
+		alpha = 1;
 	}
 
 	// @formatter:on
@@ -134,9 +139,8 @@ final class Player extends FlxSprite {
 					state = Idle;
 
 			case Hiding:
-				animation.play("hiding");
-				if (hidePressed)
-					state = Idle;
+				// Let's game know player is hidden so NPC's won't spot player.
+
 			case Idle:
 				velocity.x = 0;
 				throwSeconds = 0;
@@ -148,8 +152,6 @@ final class Player extends FlxSprite {
 					throwPosition = new FlxPoint(x, y);
 					state = Gathering;
 				}
-				if (hidePressed)
-					state = Hiding;
 		}
 	}
 
@@ -159,6 +161,7 @@ final class Player extends FlxSprite {
 		right = controls.right.check();
 		runBtnPressed = controls.cross.check();
 		throwBtnPressed = controls.circle.check();
+		// hidePressed = controls.up.check();
 
 		bothDirectionsPressed = left && right;
 		singleDirectionPressed = left || right;

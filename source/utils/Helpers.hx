@@ -1,6 +1,8 @@
 package utils;
 
 import flixel.FlxSprite;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxFramesCollection;
 
 final class Helpers {
 	/**
@@ -53,5 +55,17 @@ final class Helpers {
 		sprite.updateHitbox();
 		sprite.offset.set(offsetWidth, offsetHeight);
 		sprite.scale.set(1, 1);
+	}
+
+	/**
+	 * Load textpure packer frames for FlxSprite.
+	 *
+	 * @param path where frames are located, exclude extention and assets/images/
+	 */
+	public static function loadFrames(path: String): FlxFramesCollection {
+		return FlxAtlasFrames.fromTexturePackerJson(
+			'assets/images/$path.png',
+			'assets/images/$path.json'
+		);
 	}
 }

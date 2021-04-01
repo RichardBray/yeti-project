@@ -1,0 +1,140 @@
+{
+  "frames": [
+    {
+      "filename": "L3_FLAG_LEFT.png",
+      "frame": {
+        "x": 4,
+        "y": 4,
+        "w": 31,
+        "h": 73
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 31,
+        "h": 73
+      },
+      "sourceSize": {
+        "w": 31,
+        "h": 73
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "L3_FLAG_RIGHT.png",
+      "frame": {
+        "x": 85,
+        "y": 4,
+        "w": 32,
+        "h": 75
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 75
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 75
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "L3_TREE_RIGHT.png",
+      "frame": {
+        "x": 168,
+        "y": 4,
+        "w": 83,
+        "h": 324
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 83,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 83,
+        "h": 324
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "L3_TREES_LEFT.png",
+      "frame": {
+        "x": 500,
+        "y": 4,
+        "w": 180,
+        "h": 296
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 180,
+        "h": 296
+      },
+      "sourceSize": {
+        "w": 180,
+        "h": 296
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "L3_TREES_LEFT_HIDE.png",
+      "frame": {
+        "x": 804,
+        "y": 4,
+        "w": 180,
+        "h": 296
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 180,
+        "h": 296
+      },
+      "sourceSize": {
+        "w": 180,
+        "h": 296
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  ],
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.6",
+    "image": "ski_level.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1104,
+      "h": 188
+    },
+    "scale": 1
+  }
+}
