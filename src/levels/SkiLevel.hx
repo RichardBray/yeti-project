@@ -50,5 +50,7 @@ final class SkiLevel extends LevelState {
 		add(flagLeft);
 		flagRight = new FlagRight(1386, 835);
 		add(flagRight);
+
+		addVersion();
 	}
 }

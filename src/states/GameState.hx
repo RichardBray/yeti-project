@@ -17,16 +17,6 @@ class GameState extends FlxState {
 
 		FlxAssets.FONT_DEFAULT = "assets/fonts/OpenSans-Regular.ttf";
 
-		final versionText = new FlxText(
-			FlxG.width - 70,
-			FlxG.height - 50,
-			pjson.version,
-			20
-		);
-		versionText.scrollFactor.set(0, 0);
-
-		add(versionText);
-
 		FlxG.autoPause = false;
 		FlxG.camera.antialiasing = true;
 		FlxG.mouse.useSystemCursor = true;
@@ -36,5 +26,18 @@ class GameState extends FlxState {
 		#else
 		flixel.addons.studio.FlxStudio.create();
 		#end
+	}
+
+	function addVersion() {
+		final versionText = new FlxText(
+			FlxG.width - 70,
+			FlxG.height - 50,
+			pjson.version,
+			24
+		);
+		versionText.color = Colors.GREY;
+		versionText.scrollFactor.set(0, 0);
+
+		add(versionText);
 	}
 }
