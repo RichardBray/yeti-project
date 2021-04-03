@@ -3,8 +3,8 @@
     {
       "filename": "L3_FLAG_LEFT.png",
       "frame": {
-        "x": 4,
-        "y": 4,
+        "x": 50,
+        "y": 50,
         "w": 31,
         "h": 73
       },
@@ -28,8 +28,8 @@
     {
       "filename": "L3_FLAG_RIGHT.png",
       "frame": {
-        "x": 85,
-        "y": 4,
+        "x": 223,
+        "y": 50,
         "w": 32,
         "h": 75
       },
@@ -53,8 +53,8 @@
     {
       "filename": "L3_TREE_RIGHT.png",
       "frame": {
-        "x": 168,
-        "y": 4,
+        "x": 398,
+        "y": 50,
         "w": 83,
         "h": 324
       },
@@ -78,8 +78,8 @@
     {
       "filename": "L3_TREES_LEFT.png",
       "frame": {
-        "x": 500,
-        "y": 4,
+        "x": 822,
+        "y": 50,
         "w": 180,
         "h": 296
       },
@@ -103,8 +103,8 @@
     {
       "filename": "L3_TREES_LEFT_HIDE.png",
       "frame": {
-        "x": 804,
-        "y": 4,
+        "x": 1218,
+        "y": 50,
         "w": 180,
         "h": 296
       },
@@ -132,8 +132,8 @@
     "image": "ski_level.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1104,
-      "h": 188
+      "w": 1564,
+      "h": 280
     },
     "scale": 1
   }

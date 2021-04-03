@@ -64,7 +64,7 @@ final class SnowballPaths {
 	 */
 	public function prepareDots() {
 		for (_ in 0...NO_OF_POINTS) {
-			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, Colors.red);
+			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, Colors.RED);
 			dot.alpha = 0;
 			grpDots.add(dot);
 		}

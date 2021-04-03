@@ -11,28 +11,35 @@ import utils.Colors;
 
 enum Types {
 	Hide;
+	Unhide;
 	Pick;
 }
 
 class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
+	static inline final PROMPT_WIDTH = 200;
+	static inline final PROMPT_HEIGHT = 50;
+	static inline final TWEEN_SPEED = 0.25;
+
 	var box: FlxSprite;
 	var text: FlxText;
 
 	var showYPos: Float;
 	var hideYPos: Float;
 
-	static inline final TWEEN_SPEED = 0.35;
-
 	public function new(x: Float = 0, y: Float = 0, type: Types) {
 		super(x, y, 2);
 		showYPos = y - 5;
 		hideYPos = y;
-		trace(x, y);
-		// - prompt bg
-		box = new FlxSprite().makeGraphic(150, 50, Colors.purple);
+
+		// 1 - prompt bg
+		box = new FlxSprite().makeGraphic(
+			PROMPT_WIDTH,
+			PROMPT_HEIGHT,
+			Colors.PURPLE
+		);
 		add(box);
-		// - prompt text
-		text = new FlxText(0, 5, 150, "⬆️ to Hide", 24);
+		// 2 - prompt text
+		text = new FlxText(0, 5, PROMPT_WIDTH, promptText(type), 24);
 		text.alignment = FlxTextAlign.CENTER;
 		add(text);
 
@@ -55,5 +62,16 @@ class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
 			TWEEN_SPEED,
 			{ease: FlxEase.cubeIn}
 		);
+	}
+
+	inline function promptText(type: Types): String {
+		switch (type) {
+			case Hide:
+				return "⬆️ to Hide";
+			case Unhide:
+				return "⬆️ to Unhide";
+			case Pick:
+				return "⬆️ to Pick up";
+		}
 	}
 }

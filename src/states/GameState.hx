@@ -13,7 +13,7 @@ class GameState extends FlxState {
 
 	override public function create() {
 		super.create();
-		bgColor = Colors.grey;
+		bgColor = Colors.GREY;
 
 		FlxAssets.FONT_DEFAULT = "assets/fonts/OpenSans-Regular.ttf";
 

@@ -16,7 +16,7 @@ final class Snowball extends FlxSprite {
 
 	public function new(x: Float, y: Float) {
 		super(x, y);
-		makeGraphic(25, 25, Colors.white);
+		makeGraphic(25, 25, Colors.WHITE);
 		alpha = 0;
 	}
 

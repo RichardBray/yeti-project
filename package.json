@@ -2,10 +2,10 @@
   "name": "yeti-game",
   "version": "0.1.0",
   "description": "Haxe based 2D stealth puzzle game. Help the Yeti find a new home and not get spotted by humans",
-  "main": "source/Main.hx",
+  "main": "src/Main.hx",
   "scripts": {
     "start": "npx concurrently \"npm run watch\" \"npm run server\"",
-    "watch": "watchman-make -p 'source/**/*.hx' -r 'sh watcher.sh'",
+    "watch": "watchman-make -p 'src/**/*.hx' -r 'sh watcher.sh'",
     "server": "npx http-server export/html5/bin -s",
     "comp-server": "npx haxe -v --wait 7000",
     "release": "standard-version"
