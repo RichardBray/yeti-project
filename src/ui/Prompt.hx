@@ -16,8 +16,8 @@ enum Types {
 }
 
 class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
-	static inline final PROMPT_WIDTH = 200;
-	static inline final PROMPT_HEIGHT = 50;
+	public static inline final WIDTH = 200;
+	static inline final HEIGHT = 50;
 	static inline final TWEEN_SPEED = 0.25;
 
 	var box: FlxSprite;
@@ -32,14 +32,10 @@ class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
 		hideYPos = y;
 
 		// 1 - prompt bg
-		box = new FlxSprite().makeGraphic(
-			PROMPT_WIDTH,
-			PROMPT_HEIGHT,
-			Colors.PURPLE
-		);
+		box = new FlxSprite().makeGraphic(WIDTH, HEIGHT, Colors.PURPLE);
 		add(box);
 		// 2 - prompt text
-		text = new FlxText(0, 5, PROMPT_WIDTH, promptText(type), 24);
+		text = new FlxText(0, 5, WIDTH, promptText(type), 24);
 		text.alignment = FlxTextAlign.CENTER;
 		add(text);
 

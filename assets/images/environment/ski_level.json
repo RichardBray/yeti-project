@@ -56,18 +56,43 @@
         "x": 248,
         "y": 20,
         "w": 83,
-        "h": 324
+        "h": 323
       },
       "rotated": true,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
+        "x": 3,
+        "y": 1,
         "w": 83,
-        "h": 324
+        "h": 323
       },
       "sourceSize": {
-        "w": 83,
+        "w": 89,
+        "h": 324
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
+      "filename": "L3_TREE_RIGHT_HIDE.png",
+      "frame": {
+        "x": 611,
+        "y": 20,
+        "w": 89,
+        "h": 323
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 1,
+        "w": 89,
+        "h": 323
+      },
+      "sourceSize": {
+        "w": 89,
         "h": 324
       },
       "pivot": {
@@ -78,9 +103,9 @@
     {
       "filename": "L3_TREES_LEFT.png",
       "frame": {
-        "x": 612,
+        "x": 974,
         "y": 20,
-        "w": 190,
+        "w": 180,
         "h": 296
       },
       "rotated": true,
@@ -103,7 +128,7 @@
     {
       "filename": "L3_TREES_LEFT_HIDE.png",
       "frame": {
-        "x": 948,
+        "x": 1310,
         "y": 20,
         "w": 180,
         "h": 296
@@ -132,7 +157,7 @@
     "image": "ski_level.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1264,
+      "w": 1626,
       "h": 220
     },
     "scale": 1

@@ -8,7 +8,7 @@ class Outline extends FlxShader {
 
     void main() {
       vec4 color = texture2D(bitmap, openfl_TextureCoordv);
-      const float BORDER_WIDTH = 1.2;
+      const float BORDER_WIDTH = 1.5;
       float w = BORDER_WIDTH / openfl_TextureSize.x;
       float h = BORDER_WIDTH / openfl_TextureSize.y;
 

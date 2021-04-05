@@ -31,7 +31,7 @@ final class SkiLevel extends LevelState {
 		);
 		add(background);
 		// - trees
-		treeSingle = new TreeSingle(1515, 242);
+		treeSingle = new TreeSingle(1515, 242, player);
 		add(treeSingle);
 		treeMulti = new TreeMulti(267, 262, player);
 		add(treeMulti);
