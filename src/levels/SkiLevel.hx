@@ -3,6 +3,7 @@ package levels;
 import components.FlagLeft;
 import components.FlagRight;
 import components.TreeMulti;
+import components.TreePickable;
 import components.TreeSingle;
 
 import flixel.FlxG;
@@ -11,34 +12,30 @@ import flixel.FlxSprite;
 import states.LevelState;
 
 final class SkiLevel extends LevelState {
-	var background: FlxSprite;
-	var foreground: FlxSprite;
-	var treeSingle: FlxSprite;
-	var treeMulti: FlxSprite;
-	var flagLeft: FlxSprite;
-	var flagRight: FlxSprite;
-
 	override public function create() {
 		super.create();
 		// - general
 		prepareLevel(54, 400);
 		// - background
-		background = new FlxSprite(0, 0);
+		final background = new FlxSprite(0, 0);
 		background.loadGraphic(
 			"assets/images/environment/L3_BACKGROUND.png",
 			FlxG.width,
 			FlxG.height
 		);
 		add(background);
-		// - trees
-		treeSingle = new TreeSingle(1515, 242, player);
+		// - hideable trees
+		final treeSingle = new TreeSingle(1515, 242, player);
 		add(treeSingle);
-		treeMulti = new TreeMulti(267, 262, player);
+		final treeMulti = new TreeMulti(267, 262, player);
 		add(treeMulti);
+		// - pickable tree
+		final treePickable = new TreePickable(1073, 395);
+		add(treePickable);
 		// - player
 		addPlayer();
 		// - foreground
-		foreground = new FlxSprite(0, 551);
+		final foreground = new FlxSprite(0, 551);
 		foreground.loadGraphic(
 			"assets/images/environment/L3_FOREGROUND.png",
 			1920,
@@ -46,9 +43,9 @@ final class SkiLevel extends LevelState {
 		);
 		add(foreground);
 		// - flags
-		flagLeft = new FlagLeft(485, 614);
+		final flagLeft = new FlagLeft(485, 614);
 		add(flagLeft);
-		flagRight = new FlagRight(1386, 835);
+		final flagRight = new FlagRight(1386, 835);
 		add(flagRight);
 
 		addVersion();

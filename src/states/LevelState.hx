@@ -9,7 +9,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 
 /**
- * @todo make abstract class
+ * @abstract
  */
 class LevelState extends GameState {
 	var player: Player;

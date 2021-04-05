@@ -10,6 +10,7 @@ import flixel.util.typeLimit.OneOfTwo;
 import utils.Colors;
 
 enum Types {
+	Putdown;
 	Hide;
 	Unhide;
 	Pick;
@@ -68,6 +69,8 @@ class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
 				return "⬆️ to Unhide";
 			case Pick:
 				return "⬆️ to Pick up";
+			case Putdown:
+				return "⬆️ to Put down";
 		}
 	}
 }

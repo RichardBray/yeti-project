@@ -86,6 +86,7 @@ class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
 
     return {x: xPos, y: yPos};
   }
+
 	/**
 	 * Toggle prompt alphas
 	 */
