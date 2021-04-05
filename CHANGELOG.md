@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/RichardBray/yeti-project/compare/v0.1.0...v0.2.0) (2021-04-05)
+
+
+### Features
+
+* add ability to hide behind trees ([6e7fc8f](https://github.com/RichardBray/yeti-project/commit/6e7fc8f215c56214db6250c25fd907a7c5a25db0))
+* add hide prompt for hideable objects ([df4d25e](https://github.com/RichardBray/yeti-project/commit/df4d25e433610e819d8881eeb6970839b3f7fd37))
+
 ## [0.1.0](https://github.com/RichardBray/yeti-project/compare/v0.0.1...v0.1.0) (2021-03-26)
 
 
