@@ -32,7 +32,7 @@ class GameState extends FlxState {
 		final versionText = new FlxText(
 			FlxG.width - 70,
 			FlxG.height - 50,
-			pjson.version,
+			'v${pjson.version}',
 			24
 		);
 		versionText.color = Colors.GREY;

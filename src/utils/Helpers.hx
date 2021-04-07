@@ -5,14 +5,17 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFramesCollection;
 
 final class Helpers {
+	// @formatter:off
 	/**
 	 * Frame names used for sprite atlas animation
+	 *
 	 * @param noOfFrames frames used in animation
 	 * @param imgPrefix frame image name as stated in data file
-	 * @return Array<String>
 	 */
-	public static function frameNames(noOfFrames: Int,
-			imgPrefix: String): Array<String> {
+	public static function frameNames(
+		noOfFrames: Int,
+		imgPrefix: String
+	): Array<String> {
 		var frameNames: Array<String> = [];
 
 		for (frameNo in 1...(noOfFrames + 1)) {
@@ -23,7 +26,6 @@ final class Helpers {
 		return frameNames;
 	}
 
-	// @formatter:off
 	/**
 	 * Method to change the site of a sprite's hitbox size.
 	 *
