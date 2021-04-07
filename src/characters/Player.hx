@@ -29,8 +29,8 @@ final class Player extends FlxSprite {
 	var throwSeconds: Float = 0;
 	var finishThrowSeconds: Float = 0;
 	// - controls
-	var left = false;
-	var right = false;
+	var leftBtnPressed = false;
+	var rightBtnPressed = false;
 	var runBtnPressed = false;
 	var throwBtnPressed = false;
 	// - control modificaitons
@@ -94,8 +94,8 @@ final class Player extends FlxSprite {
 		if (bothDirectionsPressed || noDirectionPressed) {
 			state = Idle;
 		} else {
-			velocity.x = right ? speed : -speed;
-			facing = right ? FlxObject.RIGHT : FlxObject.LEFT;
+			velocity.x = rightBtnPressed ? speed : -speed;
+			facing = rightBtnPressed ? FlxObject.RIGHT : FlxObject.LEFT;
 		}
 	}
 
@@ -157,18 +157,18 @@ final class Player extends FlxSprite {
 
 	// @formatter:on
 	function updateControls() {
-		left = controls.left.check();
-		right = controls.right.check();
+		leftBtnPressed = controls.left.check();
+		rightBtnPressed = controls.right.check();
 		runBtnPressed = controls.cross.check();
 		throwBtnPressed = controls.circle.check();
 		// hidePressed = controls.up.check();
 
-		bothDirectionsPressed = left && right;
-		singleDirectionPressed = left || right;
+		bothDirectionsPressed = leftBtnPressed && rightBtnPressed;
+		singleDirectionPressed = leftBtnPressed || rightBtnPressed;
 		noDirectionPressed = !singleDirectionPressed;
 	}
 
-	override function update(elapsed: Float) {
+	override public function update(elapsed: Float) {
 		super.update(elapsed);
 		updateControls();
 		stateMachine(elapsed);
