@@ -3,6 +3,6 @@
 Small stealth game about a Yeti
 
 ## Controls
-LEFT/RIGHT/A/D - move
-SHIFT - throw snowball
-UP/W - action button
+- LEFT/RIGHT/A/D - move
+- SHIFT - throw snowball
+- UP/W - action button
