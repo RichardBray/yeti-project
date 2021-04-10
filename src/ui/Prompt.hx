@@ -61,6 +61,28 @@ class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
 		);
 	}
 
+	// @formatter:off
+	/**
+	 * Calculates center x pos for prompt
+	 * @param prompt
+	 * @param parentSprt
+	 */
+	public static function promptPosition(
+		parentSprt: FlxSprite,
+		parentGroup: FlxTypedSpriteGroup<FlxSprite>
+	): { x: Float, y: Float} {
+		final promptMid = WIDTH / 2;
+		final spriteMid = parentSprt.width / 2;
+
+		final xPos: Float = (spriteMid < promptMid)
+			? (spriteMid - promptMid)
+			: (promptMid - spriteMid);
+		final yPos = parentGroup.y - 50;
+
+		return {x: xPos, y: yPos};
+	}
+
+	// @formatter:on
 	inline function promptText(type: Types): String {
 		switch (type) {
 			case Hide:

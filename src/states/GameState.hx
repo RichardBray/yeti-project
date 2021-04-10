@@ -30,7 +30,7 @@ class GameState extends FlxState {
 
 	function addVersion() {
 		final versionText = new FlxText(
-			FlxG.width - 70,
+			FlxG.width - 80,
 			FlxG.height - 50,
 			'v${pjson.version}',
 			24

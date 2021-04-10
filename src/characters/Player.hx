@@ -9,12 +9,19 @@ import utils.Controls;
 import utils.Helpers;
 
 enum States {
+	Picking;
+	Carrying;
 	Hiding;
 	Throwing;
 	Gathering;
 	Sneaking;
 	Running;
 	Idle;
+}
+
+enum PickupItem {
+	Tree;
+	Nothing;
 }
 
 final class Player extends FlxSprite {
@@ -38,8 +45,11 @@ final class Player extends FlxSprite {
 	var singleDirectionPressed = false;
 	var noDirectionPressed = false;
 
+	var pickupItem: PickupItem = Nothing;
+
 	public var state(default, null): States = Idle;
 	public var throwPosition(default, null): FlxPoint;
+	public var itemDownPosition(default, null): FlxPoint;
 
 	// @formatter:off
 	public function new(x: Float = 0, y: Float = 0) {
@@ -74,6 +84,11 @@ final class Player extends FlxSprite {
 			Helpers.frameNames(5, "YETI_HIDE_"),
 			5
 		);
+		animation.addByNames(
+			"picking_tree",
+			Helpers.frameNames(9, "YETI_TREE_"),
+			5
+		);
 
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
@@ -89,10 +104,21 @@ final class Player extends FlxSprite {
 		alpha = 1;
 	}
 
+	public function pickedUpItem(item: PickupItem) {
+		state = Picking;
+		pickupItem = item;
+	}
+
+	public function putDownItem() {
+		state = Idle;
+		pickupItem = Nothing;
+		itemDownPosition = new FlxPoint(x, y);
+	}
+
 	// @formatter:on
-	function movement(speed: Int) {
+	function movement(speed: Int, stationaryState: States = Idle) {
 		if (bothDirectionsPressed || noDirectionPressed) {
-			state = Idle;
+			state = stationaryState;
 		} else {
 			velocity.x = rightBtnPressed ? speed : -speed;
 			facing = rightBtnPressed ? FlxObject.RIGHT : FlxObject.LEFT;
@@ -141,6 +167,14 @@ final class Player extends FlxSprite {
 			case Hiding:
 				// Let's game know player is hidden so NPC's won't spot player.
 
+			case Picking:
+				animation.pause();
+				if (singleDirectionPressed)
+					state = Carrying;
+
+			case Carrying:
+				pickingAnim();
+
 			case Idle:
 				velocity.x = 0;
 				throwSeconds = 0;
@@ -156,6 +190,16 @@ final class Player extends FlxSprite {
 	}
 
 	// @formatter:on
+	function pickingAnim() {
+		switch (pickupItem) {
+			case Tree:
+				movement(SNEAK_SPEED, Picking);
+				animation.play("picking_tree");
+			case Nothing:
+				// Player not holding anything
+		}
+	}
+
 	function updateControls() {
 		leftBtnPressed = controls.left.check();
 		rightBtnPressed = controls.right.check();

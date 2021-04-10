@@ -61,31 +61,16 @@ class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
     hiddenSprite.alpha = 0;
     add(hiddenSprite);
 		// 3 - hidePrompt
-    final pos = calculatePromptPos();
+    final pos = Prompt.promptPosition(visibleSprite, this);
 		hidePrompt = new Prompt(pos.x, pos.y, Hide);
 		add(hidePrompt);
 		// 4 - unhidePrompt
 		unhidePrompt = new Prompt(pos.x, pos.y, Unhide);
 		add(unhidePrompt);
-
+		// add player
     this.player = player;
 	}
 
-  /**
-   * Calculates center x pos for prompt
-   */
-  function calculatePromptPos(): {x: Float, y: Float} {
-    final promptMid = Prompt.WIDTH / 2;
-    final spriteMid = visibleSprite.width / 2;
-
-    final xPos:Float =
-      (spriteMid < promptMid)
-        ? (spriteMid - promptMid)
-        : (promptMid - spriteMid);
-    final yPos = y - 50;
-
-    return {x: xPos, y: yPos};
-  }
 
 	/**
 	 * Toggle prompt alphas
@@ -130,7 +115,10 @@ class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
 		super.update(elapsed / 2);
 
 		playerOverlap = FlxG.overlap(player, this);
-		promptToggles();
-		spriteToggels();
+		// @todo if player overlap hiding sprite prevent dropping picked up item
+		if (player.state != Picking && player.state != Carrying) {
+			spriteToggels();
+			promptToggles();
+		}
 	}
 }

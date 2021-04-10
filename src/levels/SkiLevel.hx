@@ -30,7 +30,7 @@ final class SkiLevel extends LevelState {
 		final treeMulti = new TreeMulti(267, 262, player);
 		add(treeMulti);
 		// - pickable tree
-		final treePickable = new TreePickable(1073, 395);
+		final treePickable = new TreePickable(1073, 395, player);
 		add(treePickable);
 		// - player
 		addPlayer();

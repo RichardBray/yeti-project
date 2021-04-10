@@ -3,6 +3,9 @@ package utils;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFramesCollection;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
+
+import ui.Prompt;
 
 final class Helpers {
 	// @formatter:off
