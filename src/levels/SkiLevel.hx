@@ -5,13 +5,21 @@ import components.FlagRight;
 import components.TreeMulti;
 import components.TreePickable;
 import components.TreeSingle;
+import components.parents.HideableObject;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
 
 import states.LevelState;
 
 final class SkiLevel extends LevelState {
+	/**
+	 * Group objects that can be hidden so picking and
+	 * hiding does not happen at same time.
+	 */
+	var grpHideables: FlxTypedGroup<HideableObject>;
+
 	override public function create() {
 		super.create();
 		// - general
@@ -24,11 +32,14 @@ final class SkiLevel extends LevelState {
 			FlxG.height
 		);
 		add(background);
+		// - hideables group
+		grpHideables = new FlxTypedGroup<HideableObject>();
+		add(grpHideables);
 		// - hideable trees
-		final treeSingle = new TreeSingle(1515, 242, player);
-		add(treeSingle);
 		final treeMulti = new TreeMulti(267, 262, player);
-		add(treeMulti);
+		grpHideables.add(treeMulti);
+		final treeSingle = new TreeSingle(1515, 242, player);
+		grpHideables.add(treeSingle);
 		// - pickable tree
 		final treePickable = new TreePickable(1073, 395, player);
 		add(treePickable);
@@ -49,5 +60,10 @@ final class SkiLevel extends LevelState {
 		add(flagRight);
 
 		addVersion();
+	}
+
+	override public function update(elapsed: Float) {
+		super.update(elapsed);
+		player.overHiddenObject = FlxG.overlap(player, grpHideables);
 	}
 }

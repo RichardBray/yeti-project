@@ -71,7 +71,6 @@ class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
     this.player = player;
 	}
 
-
 	/**
 	 * Toggle prompt alphas
 	 */
@@ -113,10 +112,9 @@ class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
 
 	override public function update(elapsed: Float) {
 		super.update(elapsed / 2);
-
 		playerOverlap = FlxG.overlap(player, this);
-		// @todo if player overlap hiding sprite prevent dropping picked up item
-		if (player.state != Picking && player.state != Carrying) {
+
+		if (player.state == Idle || player.state == Hiding) {
 			spriteToggels();
 			promptToggles();
 		}

@@ -48,8 +48,26 @@ final class Player extends FlxSprite {
 	var pickupItem: PickupItem = Nothing;
 
 	public var state(default, null): States = Idle;
-	public var throwPosition(default, null): FlxPoint;
-	public var itemDownPosition(default, null): FlxPoint;
+
+	/**
+	 * Throw snowball from this point when throw btn is pressed
+	 */
+	public var throwPosition(default, null) = new FlxPoint();
+
+	/**
+	 * Place pick up prompt here when player is Idle and overlaps object
+	 */
+	public var itemDownPosition(default, null) = new FlxPoint();
+
+	/**
+	 * Place put down prompt here when player is Idle
+	 */
+	public var stopPosition(default, null) = new FlxPoint();
+
+	/**
+	 * Prevents picked object from being placed over hideable object.
+	 */
+	public var overHiddenObject(default, default) = false;
 
 	// @formatter:off
 	public function new(x: Float = 0, y: Float = 0) {
@@ -58,7 +76,7 @@ final class Player extends FlxSprite {
 		frames = Helpers.loadFrames("characters/yeti");
 
 		Helpers.changeHitbox(247, 90, this, 60);
-
+		// - animations
 		animation.addByNames(
 			"idle",
 			Helpers.frameNames(5, "YETI_IDLE_"),
@@ -87,8 +105,10 @@ final class Player extends FlxSprite {
 		animation.addByNames(
 			"picking_tree",
 			Helpers.frameNames(9, "YETI_TREE_"),
-			5
+			10
 		);
+
+		// - single frames
 
 		setFacingFlip(FlxObject.LEFT, true, false);
 		setFacingFlip(FlxObject.RIGHT, false, false);
@@ -112,7 +132,7 @@ final class Player extends FlxSprite {
 	public function putDownItem() {
 		state = Idle;
 		pickupItem = Nothing;
-		itemDownPosition = new FlxPoint(x, y);
+		itemDownPosition.set(x, y);
 	}
 
 	// @formatter:on
@@ -168,12 +188,13 @@ final class Player extends FlxSprite {
 				// Let's game know player is hidden so NPC's won't spot player.
 
 			case Picking:
-				animation.pause();
+				pickingFrame();
+				stopPosition.set(x, y);
 				if (singleDirectionPressed)
 					state = Carrying;
 
 			case Carrying:
-				pickingAnim();
+				carryingAnim();
 
 			case Idle:
 				velocity.x = 0;
@@ -183,18 +204,27 @@ final class Player extends FlxSprite {
 				if (singleDirectionPressed)
 					state = Sneaking;
 				if (throwBtnPressed) {
-					throwPosition = new FlxPoint(x, y);
+					throwPosition.set(x, y);
 					state = Gathering;
 				}
 		}
 	}
 
 	// @formatter:on
-	function pickingAnim() {
+	function carryingAnim() {
 		switch (pickupItem) {
 			case Tree:
 				movement(SNEAK_SPEED, Picking);
 				animation.play("picking_tree");
+			case Nothing:
+				// Player not holding anything
+		}
+	}
+
+	function pickingFrame() {
+		switch (pickupItem) {
+			case Tree:
+				animation.frameName = "YETI_TREE_06.png";
 			case Nothing:
 				// Player not holding anything
 		}
@@ -214,6 +244,7 @@ final class Player extends FlxSprite {
 
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
+
 		updateControls();
 		stateMachine(elapsed);
 	}

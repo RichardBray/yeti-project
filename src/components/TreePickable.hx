@@ -41,7 +41,7 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 		promptPost = Prompt.promptPosition(testSprt, this);
 		pickPrompt = new Prompt(promptPost.x, promptPost.y, Pick);
 		add(pickPrompt);
-		// 3- put down prompt
+		// 3 - put down prompt
 		putDownPrompt = new Prompt(promptPost.x, promptPost.y, Putdown);
 		add(putDownPrompt);
 		// add player
@@ -55,17 +55,28 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 		this.y = newY;
 	}
 
+	// @formatter:off
 	function promptToggles() {
-		if (playerOverlap && player.state != Picking) {
-			pickPrompt.show();
-		} else {
-			pickPrompt.hide();
+		switch (player.state) {
+			case Carrying:
+				pickPrompt.hide();
+				putDownPrompt.alpha = 0;
+			case Picking:
+				pickPrompt.hide();
+				haxe.Timer.delay(() -> putDownPrompt.show(), 250);
+			case Idle:
+				putDownPrompt.hide();
+			default:
+				(playerOverlap)
+				? pickPrompt.show()
+				: pickPrompt.hide();
 		}
 	}
 
-	function updatePromptPosition() {}
-
+	// @formatter:on
 	function spriteToggels() {
+		putDownPrompt.x = promptPost.x + player.stopPosition.x;
+
 		if (playerOverlap && controls.up.check() && !controlsDelay) {
 			player.pickedUpItem(PickupItem.Tree);
 			testSprt.alpha = 0;
@@ -76,6 +87,7 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 			player.putDownItem();
 			testSprt.alpha = 1;
 			testSprt.x = player.itemDownPosition.x;
+			// - update prompt positions based on where player has dropped object
 			pickPrompt.x = promptPost.x + player.itemDownPosition.x;
 			haxe.Timer.delay(() -> controlsDelay = false, 250);
 		}
@@ -85,10 +97,10 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 		super.update(elapsed / 2);
 
 		playerOverlap = FlxG.overlap(player, this);
-		if (testSprt.alpha == 1) {
-			promptToggles();
-		}
 
-		spriteToggels();
+		if (!player.overHiddenObject) {
+			promptToggles();
+			spriteToggels();
+		}
 	}
 }
