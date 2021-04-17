@@ -65,7 +65,7 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 				pickPrompt.hide();
 				haxe.Timer.delay(() -> putDownPrompt.show(), 250);
 			case Idle:
-				putDownPrompt.hide();
+				putDownPrompt.alpha = 0;
 			default:
 				(playerOverlap)
 				? pickPrompt.show()
@@ -75,6 +75,7 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 
 	// @formatter:on
 	function spriteToggels() {
+		// - update prompt positon when player stops
 		putDownPrompt.x = promptPost.x + player.stopPosition.x;
 
 		if (playerOverlap && controls.up.check() && !controlsDelay) {

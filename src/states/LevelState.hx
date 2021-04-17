@@ -8,6 +8,8 @@ import components.SnowballPaths;
 import flixel.FlxG;
 import flixel.FlxObject;
 
+import substates.PauseMenu;
+
 /**
  * @abstract
  */
@@ -65,6 +67,12 @@ class LevelState extends GameState {
 
 		if (player.state == Throwing && snowball.gathered) {
 			snowball.followPath();
+		}
+
+		// - pause screen
+		if (FlxG.keys.justPressed.ESCAPE) {
+			final pauseMenu = new PauseMenu();
+			openSubState(pauseMenu);
 		}
 
 		FlxG.collide(player, leftBound);
