@@ -33,7 +33,7 @@ class Prompt extends FlxTypedSpriteGroup<OneOfTwo<FlxSprite, FlxText>> {
 		hideYPos = y;
 
 		// 1 - prompt bg
-		box = new FlxSprite().makeGraphic(WIDTH, HEIGHT, Colors.PURPLE);
+		box = new FlxSprite().makeGraphic(WIDTH, HEIGHT, Colors.PROMPT_BG);
 		add(box);
 		// 2 - prompt text
 		text = new FlxText(0, 5, WIDTH, promptText(type), 24);

@@ -63,8 +63,11 @@ final class SnowballPaths {
 	 * Set empty sprites in snowbll dot group
 	 */
 	public function prepareDots() {
+		final color = Colors.SNOWBALL_PATH;
+		color.alpha = 50;
+
 		for (_ in 0...NO_OF_POINTS) {
-			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, Colors.RED);
+			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, color);
 			dot.alpha = 0;
 			grpDots.add(dot);
 		}
