@@ -15,7 +15,7 @@ class GameState extends FlxState {
 		super.create();
 		bgColor = Colors.GREY;
 
-		FlxAssets.FONT_DEFAULT = "assets/fonts/OpenSans-Regular.ttf";
+		FlxAssets.FONT_DEFAULT = "assets/fonts/Rokkitt-Regular.ttf";
 
 		FlxG.autoPause = false;
 		FlxG.camera.antialiasing = true;
