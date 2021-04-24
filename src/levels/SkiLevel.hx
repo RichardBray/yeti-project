@@ -10,6 +10,7 @@ import components.TreeSingle;
 import components.parents.HideableObject;
 
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup.FlxTypedGroup;
 
@@ -21,6 +22,9 @@ final class SkiLevel extends LevelState {
 	 * hiding does not happen at same time.
 	 */
 	var grpHideables: FlxTypedGroup<HideableObject>;
+
+	var skierOverlap: FlxObject;
+	var skier: Skier;
 
 	override public function create() {
 		super.create();
@@ -56,8 +60,10 @@ final class SkiLevel extends LevelState {
 		);
 		add(foreground);
 		// - skier NPC
-		final skier = new Skier(1795, 456);
+		skier = new Skier(1921, 456);
+		skierOverlap = new FlxObject(774, 415, 100, 147);
 		add(skier);
+		add(skierOverlap);
 		// - flags
 		final flagLeft = new FlagLeft(485, 614);
 		add(flagLeft);
@@ -70,5 +76,6 @@ final class SkiLevel extends LevelState {
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
 		player.overHiddenObject = FlxG.overlap(player, grpHideables);
+		skier.reachedSkiStart = FlxG.overlap(skier, skierOverlap);
 	}
 }

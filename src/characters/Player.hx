@@ -8,7 +8,7 @@ import flixel.math.FlxPoint;
 import utils.Controls;
 import utils.Helpers;
 
-enum States {
+enum PlayerStates {
 	Picking;
 	Carrying;
 	Hiding;
@@ -47,7 +47,7 @@ final class Player extends FlxSprite {
 
 	var pickupItem: PickupItem = Nothing;
 
-	public var state(default, null): States = Idle;
+	public var state(default, null): PlayerStates = Idle;
 
 	/**
 	 * Throw snowball from this point when throw btn is pressed
@@ -67,7 +67,7 @@ final class Player extends FlxSprite {
 	/**
 	 * Prevents picked object from being placed over hideable object.
 	 */
-	public var overHiddenObject(default, default) = false;
+	public var overHiddenObject = false;
 
 	// @formatter:off
 	public function new(x: Float = 0, y: Float = 0) {
@@ -136,7 +136,7 @@ final class Player extends FlxSprite {
 	}
 
 	// @formatter:on
-	function movement(speed: Int, stationaryState: States = Idle) {
+	function movement(speed: Int, stationaryState: PlayerStates = Idle) {
 		if (bothDirectionsPressed || noDirectionPressed) {
 			state = stationaryState;
 		} else {

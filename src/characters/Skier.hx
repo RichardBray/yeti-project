@@ -6,7 +6,17 @@ import flixel.util.FlxPath;
 
 import utils.Colors;
 
+enum SkierStates {
+	Approaching;
+	StartingSki;
+	Skiing;
+	Restarting;
+}
+
 final class Skier extends FlxSprite {
+	static inline final APPROACH_SPEED = -250;
+	static inline final SKIING_SPEED = 500;
+
 	// @formatter:off
 	final movementPathCoords = [
 		{x: 843, y: 515},
@@ -25,35 +35,58 @@ final class Skier extends FlxSprite {
 		{x: 449, y: 1080},
 		{x: 240, y: 1090},
 	];
-	var completedCycle = false;
 	var finishCycleSeconds: Float = 0;
+	var state:SkierStates = Approaching;
+	var startingPos: FlxPoint;
+
+	/**
+	 * Point where skier starts going downhill.
+	 * Set in SkiLevel.hx
+	 */
+	public var reachedSkiStart = false;
 
 	// @formatter:on
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
+		startingPos = new FlxPoint(x, y);
 		makeGraphic(50, 100, Colors.GREY_DARK);
-		createPath();
-	}
-
-	function createPath() {
+		// - create path
 		final flxPointCoords = movementPathCoords.map(
 			coords -> new FlxPoint(coords.x, coords.y)
 		);
 		path = new FlxPath(flxPointCoords);
 	}
 
-	public function followPath(elapsed: Float) {
-		path.start(null, 500, FlxPath.LOOP_FORWARD);
-		path.onComplete = (_) -> {
-			alpha = 0;
-			completedCycle = true;
-			finishCycleSeconds += elapsed;
+	// @formatter:off
+	function stateMachine(elapsed: Float) {
+		switch (state) {
+			case Approaching:
+				velocity.x = APPROACH_SPEED;
+				if (reachedSkiStart) state = StartingSki;
+			case StartingSki:
+				path.start(null, SKIING_SPEED);
+				state = Skiing;
+			case Skiing:
+				path.onComplete = (_) -> {
+					alpha = 0;
+					state = Restarting;
+				}
+			case Restarting:
+				finishCycleSeconds += elapsed;
+
+				if (finishCycleSeconds >= 2) {
+					setPosition(startingPos.x, startingPos.y);
+					alpha = 1;
+					finishCycleSeconds = 0;
+					state = Approaching;
+				}
 		}
 	}
 
-	public function restartPath() {
-		alpha = 1;
-		completedCycle = false;
-		finishCycleSeconds = 0;
+	// @formatter:on
+	override public function update(elapsed: Float) {
+		super.update(elapsed);
+
+		stateMachine(elapsed);
 	}
 }
