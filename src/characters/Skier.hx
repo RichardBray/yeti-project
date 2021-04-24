@@ -10,12 +10,13 @@ enum SkierStates {
 	Approaching;
 	StartingSki;
 	Skiing;
-	Restarting;
+	Resetting;
 }
 
 final class Skier extends FlxSprite {
 	static inline final APPROACH_SPEED = -250;
 	static inline final SKIING_SPEED = 500;
+	static inline final RESET_TIME = 2;
 
 	// @formatter:off
 	final movementPathCoords = [
@@ -33,7 +34,7 @@ final class Skier extends FlxSprite {
 		{x: 1033, y: 971},
 		{x: 729, y: 1011},
 		{x: 449, y: 1080},
-		{x: 240, y: 1090},
+		{x: 160, y: 1190},
 	];
 	var finishCycleSeconds: Float = 0;
 	var state:SkierStates = Approaching;
@@ -69,12 +70,12 @@ final class Skier extends FlxSprite {
 			case Skiing:
 				path.onComplete = (_) -> {
 					alpha = 0;
-					state = Restarting;
+					state = Resetting;
 				}
-			case Restarting:
+			case Resetting:
 				finishCycleSeconds += elapsed;
 
-				if (finishCycleSeconds >= 2) {
+				if (finishCycleSeconds >= RESET_TIME) {
 					setPosition(startingPos.x, startingPos.y);
 					alpha = 1;
 					finishCycleSeconds = 0;

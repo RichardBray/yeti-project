@@ -224,7 +224,7 @@ final class Player extends FlxSprite {
 	function pickingFrame() {
 		switch (pickupItem) {
 			case Tree:
-				animation.frameName = "YETI_TREE_06.png";
+				animation.frameName = "YETI_TREE_HIDE.png";
 			case Nothing:
 				// Player not holding anything
 		}
@@ -235,7 +235,6 @@ final class Player extends FlxSprite {
 		rightBtnPressed = controls.right.check();
 		runBtnPressed = controls.cross.check();
 		throwBtnPressed = controls.circle.check();
-		// hidePressed = controls.up.check();
 
 		bothDirectionsPressed = leftBtnPressed && rightBtnPressed;
 		singleDirectionPressed = leftBtnPressed || rightBtnPressed;

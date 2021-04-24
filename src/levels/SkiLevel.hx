@@ -47,7 +47,7 @@ final class SkiLevel extends LevelState {
 		final treeSingle = new TreeSingle(1515, 242, player);
 		grpHideables.add(treeSingle);
 		// - pickable tree
-		final treePickable = new TreePickable(1073, 395, player);
+		final treePickable = new TreePickable(1073, 378, player);
 		add(treePickable);
 		// - player
 		addPlayer();

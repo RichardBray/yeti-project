@@ -8,8 +8,8 @@ import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
 import ui.Prompt;
 
-import utils.Colors;
 import utils.Controls;
+import utils.Helpers;
 
 // should be sprite grounp
 // three sprites, two prompts
@@ -35,7 +35,9 @@ final class TreePickable extends FlxTypedSpriteGroup<FlxSprite> {
 		super(x, y, 3);
 		// 1 - visible sprite
 		testSprt = new FlxSprite();
-		testSprt.makeGraphic(100, 160, Colors.PURPLE);
+		testSprt.frames = Helpers.loadFrames("environment/ski_level");
+		testSprt.animation.frameName = "TREE_PICKABLE.png";
+		testSprt.setSize(81, 184);
 		add(testSprt);
 		// 2 - pickup prompt
 		promptPost = Prompt.promptPosition(testSprt, this);
