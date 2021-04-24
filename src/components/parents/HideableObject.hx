@@ -12,10 +12,7 @@ import ui.Prompt;
 
 import utils.Controls;
 
-/**
- * @abstract
- */
-class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
+abstract class HideableObject extends FlxTypedSpriteGroup<FlxSprite> {
 	var hidePrompt: Prompt;
 	var unhidePrompt: Prompt;
 	var player: Player;

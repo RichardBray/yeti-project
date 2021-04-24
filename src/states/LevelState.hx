@@ -7,16 +7,16 @@ import components.SnowballPaths;
 
 import flixel.FlxG;
 import flixel.FlxObject;
+import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
 
 import substates.PauseMenu;
 
-/**
- * @abstract
- */
-class LevelState extends GameState {
+abstract class LevelState extends GameState {
 	var player: Player;
 	var snowball: Snowball;
 	var snowballPaths: SnowballPaths;
+	var snowballPathDots: FlxTypedGroup<FlxSprite>;
 	var leftBound: FlxObject;
 
 	override public function create() {
@@ -34,11 +34,11 @@ class LevelState extends GameState {
 		leftBound = new FlxObject(0, 0, 5, FlxG.height);
 		leftBound.immovable = true;
 		add(leftBound);
-		// - prepare player
-		player = new Player(playerX, playerY);
 		// - prepare snowball path sprites
 		snowballPaths = new SnowballPaths();
-		snowballPaths.prepareDots();
+		snowballPathDots = snowballPaths.createDots();
+		// - prepare player
+		player = new Player(playerX, playerY);
 		// - prepare snowball
 		snowball = new Snowball(0, 0);
 	}
@@ -47,9 +47,12 @@ class LevelState extends GameState {
 	 * Seperate add method for level ordering purposes
 	 */
 	function addPlayer() {
+		add(snowballPathDots);
 		add(player);
 		add(snowball);
 	}
+
+	function addSnowballPath() {}
 
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
@@ -57,12 +60,12 @@ class LevelState extends GameState {
 		if (player.state == Gathering) {
 			snowballPaths.createThrowPath(
 				player.throwPosition,
-				this,
+				snowballPathDots,
 				player.facing
 			);
 			snowball.addThrowPath(snowballPaths.line, player.throwPosition);
 		} else {
-			snowballPaths.killDots();
+			snowballPaths.killDots(snowballPathDots);
 		}
 
 		if (player.state == Throwing && snowball.gathered) {

@@ -16,7 +16,6 @@ final class SnowballPaths {
 	static inline final GRAVITY = 981;
 	static inline final NO_OF_POINTS = 20;
 
-	final grpDots = new FlxTypedGroup<FlxSprite>(NO_OF_POINTS);
 	final throwVelocity = new FlxPoint(590, 500);
 
 	var playerThrowPos: FlxPoint;
@@ -30,12 +29,12 @@ final class SnowballPaths {
 	 * Paths for snowball to follow
 	 *
 	 * @param throwPos player throw position
-	 * @param levelState used to add dots to level
+	 * @param grpDots used to add dots to level
 	 * @param playerFacing used to determine path position
 	 */
 	public function createThrowPath(
 		throwPos: FlxPoint,
-		levelState: LevelState,
+		grpDots: FlxTypedGroup<FlxSprite>,
 		playerFacing: Int
 	) {
 		playerThrowPos = throwPos;
@@ -55,15 +54,16 @@ final class SnowballPaths {
 			line[i] = new FlxPoint(pointCoords.x, pointCoords.y);
 		}
 
-		levelState.add(grpDots);
 		grpDots.revive();
 	}
   // @formatter:on
 	/**
 	 * Set empty sprites in snowbll dot group
 	 */
-	public function prepareDots() {
+	public function createDots(): FlxTypedGroup<FlxSprite> {
 		final color = Colors.SNOWBALL_PATH;
+		final grpDots = new FlxTypedGroup<FlxSprite>(NO_OF_POINTS);
+
 		color.alpha = 50;
 
 		for (_ in 0...NO_OF_POINTS) {
@@ -71,10 +71,14 @@ final class SnowballPaths {
 			dot.alpha = 0;
 			grpDots.add(dot);
 		}
+
+		return grpDots;
 	}
 
-	public function killDots() {
-		grpDots.kill();
+	public function killDots(grpDots: FlxTypedGroup<FlxSprite>) {
+		grpDots.forEach((member: FlxSprite) -> {
+			member.alpha = 0;
+		});
 	}
 
 	/**
