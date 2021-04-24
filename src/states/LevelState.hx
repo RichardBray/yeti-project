@@ -52,7 +52,7 @@ abstract class LevelState extends GameState {
 		add(snowball);
 	}
 
-	function addSnowballPath() {}
+	// function addSnowballPath() {}
 
 	override public function update(elapsed: Float) {
 		super.update(elapsed);

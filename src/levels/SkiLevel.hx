@@ -1,5 +1,7 @@
 package levels;
 
+import characters.Skier;
+
 import components.FlagLeft;
 import components.FlagRight;
 import components.TreeMulti;
@@ -53,6 +55,9 @@ final class SkiLevel extends LevelState {
 			529
 		);
 		add(foreground);
+		// - skier NPC
+		final skier = new Skier(1795, 456);
+		add(skier);
 		// - flags
 		final flagLeft = new FlagLeft(485, 614);
 		add(flagLeft);
