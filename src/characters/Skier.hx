@@ -37,8 +37,9 @@ final class Skier extends FlxSprite {
 		{x: 160, y: 1190},
 	];
 	var finishCycleSeconds: Float = 0;
-	var state:SkierStates = Approaching;
 	var startingPos: FlxPoint;
+
+	public var state(default, null):SkierStates = Approaching;
 
 	/**
 	 * Point where skier starts going downhill.
@@ -50,7 +51,7 @@ final class Skier extends FlxSprite {
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
 		startingPos = new FlxPoint(x, y);
-		makeGraphic(50, 100, Colors.GREY_DARK);
+		makeGraphic(50, 70, Colors.GREY_DARK);
 		// - create path
 		final flxPointCoords = movementPathCoords.map(
 			coords -> new FlxPoint(coords.x, coords.y)

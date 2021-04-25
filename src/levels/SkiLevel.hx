@@ -16,6 +16,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 import states.LevelState;
 
+import ui.VisionCone;
+
 final class SkiLevel extends LevelState {
 	/**
 	 * Group objects that can be hidden so picking and
@@ -24,6 +26,7 @@ final class SkiLevel extends LevelState {
 	var grpHideables: FlxTypedGroup<HideableObject>;
 
 	var skierOverlap: FlxObject;
+	var skierVisionCone: VisionCone;
 	var skier: Skier;
 
 	override public function create() {
@@ -60,8 +63,10 @@ final class SkiLevel extends LevelState {
 		);
 		add(foreground);
 		// - skier NPC
-		skier = new Skier(1921, 456);
+		skier = new Skier(1921, 486);
 		skierOverlap = new FlxObject(774, 415, 100, 147);
+		skierVisionCone = new VisionCone(0, 0);
+		add(skierVisionCone);
 		add(skier);
 		add(skierOverlap);
 		// - flags
@@ -73,9 +78,23 @@ final class SkiLevel extends LevelState {
 		addVersion();
 	}
 
+	function visionConeUpdates() {
+		skierVisionCone.setPosition(
+			(skier.x - skierVisionCone.width),
+			(skier.y - (skierVisionCone.height / 2) + (skier.height / 2))
+		);
+
+		if (skier.state == Approaching) {
+			skierVisionCone.alpha = 1;
+		} else {
+			skierVisionCone.alpha = 0;
+		}
+	}
+
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
 		player.overHiddenObject = FlxG.overlap(player, grpHideables);
 		skier.reachedSkiStart = FlxG.overlap(skier, skierOverlap);
+		visionConeUpdates();
 	}
 }

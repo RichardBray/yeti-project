@@ -30,10 +30,10 @@ class GameState extends FlxState {
 
 	function addVersion() {
 		final versionText = new FlxText(
-			FlxG.width - 80,
+			FlxG.width - 100,
 			FlxG.height - 50,
 			'v${pjson.version}',
-			24
+			32
 		);
 		versionText.color = Colors.GREY;
 		versionText.scrollFactor.set(0, 0);
