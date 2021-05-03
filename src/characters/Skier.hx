@@ -1,6 +1,7 @@
 package characters;
 
-import flixel.FlxSprite;
+import characters.parents.SenseChar;
+
 import flixel.math.FlxPoint;
 import flixel.util.FlxPath;
 
@@ -11,12 +12,16 @@ enum SkierStates {
 	StartingSki;
 	Skiing;
 	Resetting;
+	Alert;
 }
 
-final class Skier extends FlxSprite {
+final class Skier extends SenseChar {
 	static inline final APPROACH_SPEED = -250;
-	static inline final SKIING_SPEED = 500;
-	static inline final RESET_TIME = 2;
+	static inline final SKIING_SPEED = 680;
+	static inline final RESET_TIME = 0.2;
+	static inline final ALERT_TIME = 4; // seconds
+
+	var alertSeconds: Float = 0;
 
 	// @formatter:off
 	final movementPathCoords = [
@@ -50,7 +55,7 @@ final class Skier extends FlxSprite {
 	// @formatter:on
 	public function new(x: Float = 0, y: Float = 0) {
 		super(x, y);
-		startingPos = new FlxPoint(x, y);
+		startingPos = new FlxPoint(1921, 486);
 		makeGraphic(50, 70, Colors.GREY_DARK);
 		// - create path
 		final flxPointCoords = movementPathCoords.map(
@@ -65,6 +70,7 @@ final class Skier extends FlxSprite {
 			case Approaching:
 				velocity.x = APPROACH_SPEED;
 				if (reachedSkiStart) state = StartingSki;
+				if (isAlert) state = Alert;
 			case StartingSki:
 				path.start(null, SKIING_SPEED);
 				state = Skiing;
@@ -82,6 +88,13 @@ final class Skier extends FlxSprite {
 					finishCycleSeconds = 0;
 					state = Approaching;
 				}
+			case Alert:
+				velocity.x = 0;
+				alertSeconds += elapsed;
+				if (alertSeconds >=ALERT_TIME) {
+					isAlert = false;
+					state = Approaching;
+				}
 		}
 	}
 
@@ -90,5 +103,11 @@ final class Skier extends FlxSprite {
 		super.update(elapsed);
 
 		stateMachine(elapsed);
+
+		if (state == Approaching || state == Alert) {
+			showSenses = true;
+		} else {
+			showSenses = false;
+		}
 	}
 }
