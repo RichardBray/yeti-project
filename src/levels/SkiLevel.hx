@@ -1,13 +1,14 @@
 package levels;
 
 import characters.Skier;
+import characters.parents.SensesGrp;
 
 import components.FlagLeft;
 import components.FlagRight;
 import components.TreeMulti;
 import components.TreePickable;
 import components.TreeSingle;
-import components.parents.HideableObject;
+import components.parents.HideableObjectGrp;
 
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -16,18 +17,16 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 import states.LevelState;
 
-import ui.VisionCone;
-
 final class SkiLevel extends LevelState {
 	/**
 	 * Group objects that can be hidden so picking and
 	 * hiding does not happen at same time.
 	 */
-	var grpHideables: FlxTypedGroup<HideableObject>;
+	var grpHideables: FlxTypedGroup<HideableObjectGrp>;
 
 	var skierOverlap: FlxObject;
-	var skierVisionCone: VisionCone;
 	var skier: Skier;
+	var skierSenses: SensesGrp;
 
 	override public function create() {
 		super.create();
@@ -42,7 +41,7 @@ final class SkiLevel extends LevelState {
 		);
 		add(background);
 		// - hideables group
-		grpHideables = new FlxTypedGroup<HideableObject>();
+		grpHideables = new FlxTypedGroup<HideableObjectGrp>();
 		add(grpHideables);
 		// - hideable trees
 		final treeMulti = new TreeMulti(267, 262, player);
@@ -63,11 +62,10 @@ final class SkiLevel extends LevelState {
 		);
 		add(foreground);
 		// - skier NPC
-		skier = new Skier(1921, 486);
+		skier = new Skier();
 		skierOverlap = new FlxObject(774, 415, 100, 147);
-		skierVisionCone = new VisionCone(0, 0);
-		add(skierVisionCone);
-		add(skier);
+		skierSenses = new SensesGrp(skier, 1921, 486, player, snowball);
+		add(skierSenses);
 		add(skierOverlap);
 		// - flags
 		final flagLeft = new FlagLeft(485, 614);
@@ -78,23 +76,9 @@ final class SkiLevel extends LevelState {
 		addVersion();
 	}
 
-	function visionConeUpdates() {
-		skierVisionCone.setPosition(
-			(skier.x - skierVisionCone.width),
-			(skier.y - (skierVisionCone.height / 2) + (skier.height / 2))
-		);
-
-		if (skier.state == Approaching) {
-			skierVisionCone.alpha = 1;
-		} else {
-			skierVisionCone.alpha = 0;
-		}
-	}
-
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
 		player.overHiddenObject = FlxG.overlap(player, grpHideables);
 		skier.reachedSkiStart = FlxG.overlap(skier, skierOverlap);
-		visionConeUpdates();
 	}
 }
