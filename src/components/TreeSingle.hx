@@ -2,13 +2,13 @@ package components;
 
 import characters.Player;
 
-import components.parents.HideableObject;
+import components.parents.HideableObjectGrp;
 
 import flixel.FlxSprite;
 
 import utils.Helpers;
 
-final class TreeSingle extends HideableObject {
+final class TreeSingle extends HideableObjectGrp {
 	public function new(x: Float = 0, y: Float = 0, player: Player) {
 		// - visibleTree
 		var visibleTree = new FlxSprite();

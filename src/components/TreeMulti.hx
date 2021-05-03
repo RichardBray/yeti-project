@@ -2,13 +2,13 @@ package components;
 
 import characters.Player;
 
-import components.parents.HideableObject;
+import components.parents.HideableObjectGrp;
 
 import flixel.FlxSprite;
 
 import utils.Helpers;
 
-final class TreeMulti extends HideableObject {
+final class TreeMulti extends HideableObjectGrp {
 	/**
 	 * Group of sprites to display tress and prompt when player overlaps.
 	 *
