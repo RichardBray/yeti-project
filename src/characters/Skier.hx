@@ -70,7 +70,7 @@ final class Skier extends SenseChar {
 			case Approaching:
 				velocity.x = APPROACH_SPEED;
 				if (reachedSkiStart) state = StartingSki;
-				if (isAlert) state = Alert;
+				if (alert) state = Alert;
 			case StartingSki:
 				path.start(null, SKIING_SPEED);
 				state = Skiing;
@@ -92,7 +92,8 @@ final class Skier extends SenseChar {
 				velocity.x = 0;
 				alertSeconds += elapsed;
 				if (alertSeconds >=ALERT_TIME) {
-					isAlert = false;
+					alert = false;
+					alertSeconds = 0;
 					state = Approaching;
 				}
 		}
@@ -101,9 +102,7 @@ final class Skier extends SenseChar {
 	// @formatter:on
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
-
 		stateMachine(elapsed);
-
 		if (state == Approaching || state == Alert) {
 			showSenses = true;
 		} else {
