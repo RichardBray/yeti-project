@@ -20,12 +20,12 @@ final class Snowball extends FlxSprite {
 		alpha = 0;
 	}
 
+  // @formatter:off
 	/**
 	 * Add path to snowball sprite
 	 * @param snowballLinePath
 	 * @param throwPosition
 	 */
-  // @formatter:off
 	public function addThrowPath(
 		snowballLinePath: Vector<FlxPoint>,
 		throwPosition: FlxPoint

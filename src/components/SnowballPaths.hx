@@ -7,12 +7,10 @@ import flixel.math.FlxPoint;
 
 import haxe.ds.Vector;
 
-import states.LevelState;
-
 import utils.Colors;
 
 final class SnowballPaths {
-	static inline final Y_LIMIT = 190;
+	static inline final SURFACE = 190;
 	static inline final GRAVITY = 981;
 	static inline final NO_OF_POINTS = 20;
 
@@ -20,7 +18,7 @@ final class SnowballPaths {
 
 	var playerThrowPos: FlxPoint;
 
-	public final line: Vector<FlxPoint> = new Vector(NO_OF_POINTS);
+	public final linePath: Vector<FlxPoint> = new Vector(NO_OF_POINTS);
 
 	public function new() {}
 
@@ -38,23 +36,21 @@ final class SnowballPaths {
 		playerFacing: Int
 	) {
 		playerThrowPos = throwPos;
-		final lowestTimeValue = timeValue() / NO_OF_POINTS;
+		final flightTimeBetweenPoints = timeOfFlight() / NO_OF_POINTS;
 		// Flip dots if based on player facing
 		throwVelocity.x = (playerFacing == FlxObject.LEFT)
 			? -Math.abs(throwVelocity.x)
 			: Math.abs(throwVelocity.x);
 
 		for (i in 0...NO_OF_POINTS) {
-			final time = lowestTimeValue * i;
+			final time = flightTimeBetweenPoints * i;
 			final pointCoords = calculateProjectilePoints(time);
-			final selectedDot = grpDots.members[i];
+			final singleDotFromGrp = grpDots.members[i];
 
-			selectedDot.setPosition(pointCoords.x, pointCoords.y);
-			selectedDot.alpha = 1;
-			line[i] = new FlxPoint(pointCoords.x, pointCoords.y);
+			linePath[i] = new FlxPoint(pointCoords.x, pointCoords.y);
+			singleDotFromGrp.setPosition(pointCoords.x, pointCoords.y);
+			singleDotFromGrp.alpha = 1;
 		}
-
-		grpDots.revive();
 	}
   // @formatter:on
 	/**
@@ -62,9 +58,8 @@ final class SnowballPaths {
 	 */
 	public function createDots(): FlxTypedGroup<FlxSprite> {
 		final color = Colors.SNOWBALL_PATH;
-		final grpDots = new FlxTypedGroup<FlxSprite>(NO_OF_POINTS);
-
 		color.alpha = 50;
+		final grpDots = new FlxTypedGroup<FlxSprite>(NO_OF_POINTS);
 
 		for (_ in 0...NO_OF_POINTS) {
 			final dot = new FlxSprite(0, 0).makeGraphic(5, 5, color);
@@ -84,9 +79,7 @@ final class SnowballPaths {
 	/**
 	 * Formulas for trajectory x and y coords
 	 * x = startingPoint.x + velocity.x * time
-	 * y = startingPoint.y + (velocity.y * time) - (gravity * time(2) / 2)
-	 *
-	 * @param time
+	 * y = startingPoint.y + (velocity.y * time) - (gravity * time² / 2)
 	 */
 	function calculateProjectilePoints(time: Float): {x: Float, y: Float} {
 		final x = playerThrowPos.x + throwVelocity.x * time;
@@ -101,13 +94,13 @@ final class SnowballPaths {
 
 	/**
 	 * Get time value to manually position lowest point of trajectory
+	 * (velocity.y + √ (velocity.y² + 2 * gravity * (startingPoint.y - surface))) / gravity
 	 */
-	function timeValue(): Float {
-		final multiVelocity = throwVelocity.y * throwVelocity.y;
-		final time = (throwVelocity.y
+	function timeOfFlight(): Float {
+		final velocityYSquared = throwVelocity.y * throwVelocity.y;
+		return (throwVelocity.y
 			+ Math.sqrt(
-				multiVelocity + 2 * GRAVITY * (playerThrowPos.y - Y_LIMIT)
+				velocityYSquared + 2 * GRAVITY * (playerThrowPos.y - SURFACE)
 			)) / GRAVITY;
-		return time;
 	}
 }
