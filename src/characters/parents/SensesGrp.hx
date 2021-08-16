@@ -9,7 +9,6 @@ import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 
 import ui.VisionCone;
-
 final class SensesGrp extends FlxTypedSpriteGroup<FlxSprite> {
 	// - overlaps
 	var hearingOverlap = false;
@@ -34,8 +33,8 @@ final class SensesGrp extends FlxTypedSpriteGroup<FlxSprite> {
     // overlap objects
     this.player = player;
     this.snowball = snowball;
-    // 1 - hearing hearingBound
-    hearingBound = new FlxSprite();
+// 1 - hearingBound
+    hearingBound = new FlxSprite(0, 0);
     hearingBound.makeGraphic(320, 152);
     add(hearingBound);
     // 2 - vision cone
@@ -47,14 +46,27 @@ final class SensesGrp extends FlxTypedSpriteGroup<FlxSprite> {
 	}
   // @formatter:on
 	function visionConeUpdates() {
+visionOverlap = senseTrigger(visionCone);
 		visionCone.setPosition(
 			(character.x - visionCone.width),
 			(character.y - (visionCone.height / 2) + (character.height / 2))
 		);
+if (visionOverlap) {
+			character.isAlert();
+		}
+
+		// if (player vision overlap for more than two seconds) {
+		//   player.isCaught = true;
+		// }
 	}
 
 	function hearingBoundUpdate() {
+hearingOverlap = senseTrigger(hearingBound);
 		hearingBound.x = (character.x + character.width);
+if (hearingOverlap) {
+			character.isAlert();
+			character.lookBehind();
+		}
 	}
 
 	function sensesVisibility() {
@@ -67,24 +79,27 @@ final class SensesGrp extends FlxTypedSpriteGroup<FlxSprite> {
 		}
 	}
 
+/**
+	 * Trigger when player or snowball overlaps
+	 *
+	 * @param sense Vision on hearing
+	 */
+	function senseTrigger(sense: FlxSprite): Bool {
+		// @formatter:off
+		return (
+			(snowball.alpha == 1 && FlxG.overlap(sense, snowball))
+			|| FlxG.overlap(sense, player)
+		);
+	}
+
+	// @formatter:on
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
 
-		visionConeUpdates();
-		hearingBoundUpdate();
-		sensesVisibility();
-
-		hearingOverlap = (FlxG.overlap(hearingBound, snowball)
-			|| FlxG.overlap(hearingBound, player));
-		visionOverlap = (FlxG.overlap(visionCone, snowball)
-			|| FlxG.overlap(visionCone, player));
-
-		if (hearingOverlap || visionOverlap) {
-			character.isAlert = true;
-		}
-
-		if (hearingOverlap) {
-			character.lookBehind();
-		}
+if (character.showSenses) {
+visionConeUpdates();
+			hearingBoundUpdate();
+}
+sensesVisibility();
 	}
 }

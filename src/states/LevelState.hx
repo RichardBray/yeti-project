@@ -61,7 +61,8 @@ abstract class LevelState extends GameState {
 				snowballPathDots,
 				player.facing
 			);
-			snowball.addThrowPath(snowballPaths.line, player.throwPosition);
+			snowball.addThrowPath(snowballPaths.linePath,
+				player.throwPosition);
 		} else {
 			snowballPaths.killDots(snowballPathDots);
 		}
@@ -77,5 +78,13 @@ abstract class LevelState extends GameState {
 		}
 
 		FlxG.collide(player, leftBound);
+
+		// player caughts
+		// if (player.isCaught == true) {
+		// 	show
+		// 	game
+		// 	over
+		// 	screen
+		// }
 	}
 }
