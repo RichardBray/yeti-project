@@ -22,10 +22,10 @@
   },
   "homepage": "https://github.com/RichardBray/yeti-project#readme",
   "dependencies": {
-    "concurrently": "^5.2.0",
-    "http-server": "^0.12.3"
+    "concurrently": "^6.2.2",
+    "http-server": "^13.0.2"
   },
   "devDependencies": {
-    "standard-version": "^9.1.1"
+    "standard-version": "^9.3.1"
   }
 }
