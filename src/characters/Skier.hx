@@ -5,9 +5,7 @@ import characters.parents.SenseChar;
 import flixel.math.FlxPoint;
 import flixel.util.FlxPath;
 
-import utils.Colors;
-
-enum SkierStates {
+import utils.Colors;enum SkierStates {
 	Approaching;
 	StartingSki;
 	Skiing;
@@ -18,8 +16,8 @@ enum SkierStates {
 final class Skier extends SenseChar {
 	static inline final APPROACH_SPEED = -250;
 	static inline final SKIING_SPEED = 680;
-	static inline final RESET_TIME = 0.2;
-	static inline final ALERT_TIME = 4; // seconds
+	static inline final WAIT_TIME_BEFORE_RESET = 0.2;
+	static inline final ALERT_TIME_IN_SECONDS = 4;
 
 	var alertSeconds: Float = 0;
 
@@ -41,7 +39,7 @@ final class Skier extends SenseChar {
 		{x: 449, y: 1080},
 		{x: 160, y: 1190},
 	];
-	var finishCycleSeconds: Float = 0;
+	var offScreenCount: Float = 0;
 	var startingPos: FlxPoint;
 
 	public var state(default, null):SkierStates = Approaching;
@@ -80,18 +78,17 @@ final class Skier extends SenseChar {
 					state = Resetting;
 				}
 			case Resetting:
-				finishCycleSeconds += elapsed;
-
-				if (finishCycleSeconds >= RESET_TIME) {
+				offScreenCount += elapsed;
+				if (offScreenCount >= WAIT_TIME_BEFORE_RESET) {
 					setPosition(startingPos.x, startingPos.y);
 					alpha = 1;
-					finishCycleSeconds = 0;
+					offScreenCount = 0;
 					state = Approaching;
 				}
 			case Alert:
 				velocity.x = 0;
 				alertSeconds += elapsed;
-				if (alertSeconds >=ALERT_TIME) {
+				if (alertSeconds >=ALERT_TIME_IN_SECONDS) {
 					alert = false;
 					alertSeconds = 0;
 					state = Approaching;

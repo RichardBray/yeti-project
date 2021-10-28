@@ -33,25 +33,25 @@ final class SensesGrp extends FlxTypedSpriteGroup<FlxSprite> {
     // overlap objects
     this.player = player;
     this.snowball = snowball;
-// 1 - hearingBound
+		// 1 - hearingBound
     hearingBound = new FlxSprite(0, 0);
     hearingBound.makeGraphic(320, 152);
-    add(hearingBound);
+    // add(hearingBound);
     // 2 - vision cone
     visionCone = new VisionCone();
-    add(visionCone);
+    // add(visionCone);
     // 3 - character
     character = npc;
     add(character);
 	}
   // @formatter:on
 	function visionConeUpdates() {
-visionOverlap = senseTrigger(visionCone);
+		visionOverlap = senseTrigger(visionCone);
 		visionCone.setPosition(
 			(character.x - visionCone.width),
 			(character.y - (visionCone.height / 2) + (character.height / 2))
 		);
-if (visionOverlap) {
+		if (visionOverlap) {
 			character.isAlert();
 		}
 
@@ -61,9 +61,9 @@ if (visionOverlap) {
 	}
 
 	function hearingBoundUpdate() {
-hearingOverlap = senseTrigger(hearingBound);
+		hearingOverlap = senseTrigger(hearingBound);
 		hearingBound.x = (character.x + character.width);
-if (hearingOverlap) {
+		if (hearingOverlap) {
 			character.isAlert();
 			character.lookBehind();
 		}
@@ -79,7 +79,7 @@ if (hearingOverlap) {
 		}
 	}
 
-/**
+	/**
 	 * Trigger when player or snowball overlaps
 	 *
 	 * @param sense Vision on hearing
@@ -96,10 +96,10 @@ if (hearingOverlap) {
 	override public function update(elapsed: Float) {
 		super.update(elapsed);
 
-if (character.showSenses) {
-visionConeUpdates();
+		if (character.showSenses) {
+			visionConeUpdates();
 			hearingBoundUpdate();
-}
-sensesVisibility();
+		}
+		sensesVisibility();
 	}
 }

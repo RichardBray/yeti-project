@@ -17,8 +17,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 
 import states.LevelState;
 
-final class SkiLevel extends LevelState {
-	/**
+final class SkiLevel extends LevelState {	/**
 	 * Group objects that can be hidden so picking and
 	 * hiding does not happen at same time.
 	 */
